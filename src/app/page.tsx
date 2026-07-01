@@ -3,7 +3,6 @@ import About from "@/sections/About";
 import WhatIDo from "@/sections/WhatIDo";
 import Navbar from "@/components/Navbar";
 import Experience from "@/sections/Experience";
-import Projects from "@/sections/Projects";
 import Skills from "@/sections/Skills";
 import Education from "@/sections/Education";
 import Contact from "@/sections/Contact";
@@ -18,7 +17,6 @@ export default function Home() {
       <About />
       <WhatIDo />
       <Experience />
-      <Projects />
       <Skills />
       <Education />
       <Contact />
