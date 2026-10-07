@@ -9,11 +9,11 @@ export const caseStudies = [
     summary:
       "Proyecto académico desarrollado a partir de una necesidad detectada por el equipo TIC de un hospital público chileno, orientado al análisis y diseño de una solución digital para apoyar la activación y coordinación del Código Azul.",
     year: "2026",
-    role: "Product Owner · Analista Funcional",
+    role: "Product Owner · Analista Funcional · Enlace con el hospital",
     category: "Transformación Digital en Salud",
     readingTime: "8 min",
     context:
-      "El proyecto nace a partir de una necesidad identificada por el equipo de Tecnologías de la Información de un hospital público chileno, relacionada con la optimización de procesos críticos de coordinación clínica.",
+      "El proyecto nace a partir de una necesidad identificada por el equipo de Tecnologías de la Información de un hospital público chileno, relacionada con la optimización de procesos críticos de coordinación clínica. Como Product Owner del proyecto académico, participo como enlace entre el hospital y el equipo de desarrollo mediante el levantamiento de necesidades, la aclaración y traducción de requerimientos y la comunicación del contexto institucional hacia el equipo. Esta participación corresponde al proyecto académico y no a un cargo formal del hospital.",
     challenge:
       "Analizar un proceso clínico crítico e identificar oportunidades para apoyar digitalmente la activación, coordinación y seguimiento de equipos de respuesta, sin exponer información sensible de la institución.",
     research:
@@ -45,7 +45,7 @@ export const caseStudies = [
     summary:
       "Caso orientado a transformar datos institucionales en información útil para la planificación, seguimiento de brechas y toma de decisiones dentro de una unidad organizacional.",
     year: "2025",
-    role: "Analista de Datos",
+    role: "Diseño, desarrollo y análisis de datos",
     category: "Datos y Gestión",
     readingTime: "5 min",
     context:

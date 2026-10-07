@@ -44,14 +44,15 @@ Están disponibles en el dialog real de la Home y al final de cada caso.
 Los enlaces externos tienen `target=_blank` y `rel="noopener noreferrer"`.
 No se implementó un backend de correo ni formulario, ni se enviaron mensajes.
 
-El componente de descarga existe, pero no renderiza un enlace mientras el archivo
-falte. Ruta exacta para proporcionar el PDF definitivo:
-
+El PDF definitivo aprobado está incorporado sin modificar su contenido en
 **`public/cv-fransheska-ruiz.pdf`** → URL **`/cv-fransheska-ruiz.pdf`**.
 
-Después de incorporarlo hay que ejecutar `npm run build`: la disponibilidad se
-resuelve al prerenderizar. No se creó un PDF ficticio. El estado actual muestra
-«CV no disponible para descarga todavía.».
+`CvDownload` detecta su disponibilidad al prerenderizar y muestra «Descargar CV
+(PDF)» en el dialog de contacto de Home y en los tres casos. La descarga es del
+mismo dominio y conserva el nombre `cv-fransheska-ruiz.pdf`.
+
+SHA-256 del adjunto y del archivo público:
+`dc7f8edd549e94a753813fedfeabbf00fe7633f0ddc3cf11e2d2c872748f81ce`.
 
 ## SEO
 
@@ -108,9 +109,16 @@ una captura larga.
 
 ## Dependencias del usuario antes de decidir el merge
 
-1. Proporcionar el PDF definitivo en `public/cv-fransheska-ruiz.pdf`, o aprobar que la descarga permanezca ausente.
-2. Proporcionar una imagen social aprobada en `public/images/og-campo-gravitacional.png`, o aprobar compartir metadata textual sin imagen.
-3. Si se desean evidencias visuales reales del caso principal, proporcionar capturas anonimizadas/autorizadas. Son opcionales para el funcionamiento actual; permanecen los visuales ilustrativos aprobados.
-4. Comprobar LinkedIn desde un navegador con acceso normal; el proxy impidió su validación externa.
+1. Proporcionar una imagen social aprobada en `public/images/og-campo-gravitacional.png`, o aprobar compartir metadata textual sin imagen.
+2. Si se desean evidencias visuales reales del caso principal, proporcionar capturas anonimizadas/autorizadas. Son opcionales para el funcionamiento actual; permanecen los visuales ilustrativos aprobados.
+3. Comprobar LinkedIn desde un navegador con acceso normal; el proxy impidió su validación externa.
 
 La PR permanece Draft; no se hizo merge ni despliegue de producción.
+
+## Ajustes finales de contenido y CV
+
+- Análisis de datos: rol «Diseño, desarrollo y análisis de datos». La experiencia laboral mantiene «Administrativa de Capacitación».
+- SIRIUS: rol «Product Owner · Analista Funcional · Enlace con el hospital». Su contexto explica el levantamiento de necesidades, aclaración/traducción de requerimientos y comunicación institucional hacia el equipo como participación en el proyecto académico, sin cargo formal hospitalario. Mantiene EN DESARROLLO y la advertencia de ausencia de implementación clínica/resultados.
+- Se repitieron lint, TypeScript y build. El informe `final-content-cv-report.json` registra la QA de Home y las tres rutas a 1440/768/390, descarga por teclado, HTTP 200, MIME PDF, nombre de archivo, igualdad de bytes y enlaces internos.
+- Las capturas e informe `phase2/report.json` anteriores documentan la validación inicial de Fase 2, previa a estos ajustes. El nuevo informe sustituye su comprobación histórica de CV ausente.
+- No se cambiaron componentes, estilos, animaciones ni configuración SEO.
