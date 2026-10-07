@@ -31,7 +31,7 @@ export default function ProjectSelector({ visuals }: { visuals: ReactNode[] }) {
         <h3>{project.title}</h3><small>{project.subtitle}</small>
       </button>)}
     </div>
-  <Dialog id="case-dialog" dialogRef={dialogRef}>
+  <Dialog id="case-dialog" labelledBy="case-title" dialogRef={dialogRef}>
     <h2 id="case-title">{selected.title}</h2>
     <div id="case-body">{selected.blocks.map((block) => <div key={block.title}><h3>{block.title}</h3><p>{block.text}</p></div>)}</div>
   </Dialog></>;

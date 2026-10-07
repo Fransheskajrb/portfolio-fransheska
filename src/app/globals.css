@@ -71,3 +71,7 @@ main{z-index:1}footer{position:relative;z-index:1}
 @media(max-width:540px){body::before{background-position:40% 50%;opacity:.27}}
 
 .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+
+/* Only visible on keyboard focus; leaves the approved composition unchanged. */
+.skip-link{position:fixed;top:16px;left:16px;z-index:100;padding:12px 16px;background:#43474c;color:#f2eee6}
+.skip-link:not(:focus){width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}

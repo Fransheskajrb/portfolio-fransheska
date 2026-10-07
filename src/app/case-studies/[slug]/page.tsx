@@ -20,7 +20,7 @@ export default async function CaseStudyPage({
   }
 
   return (
-    <main className="bg-slate-50 px-6 py-28">
+    <main id="main-content" tabIndex={-1} className="bg-slate-50 px-6 py-28">
       <article className="mx-auto max-w-4xl">
         <Link
           href="/"

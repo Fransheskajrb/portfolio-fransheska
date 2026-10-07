@@ -1,0 +1,102 @@
+const {chromium}=require('playwright');
+const assert=require('node:assert/strict'),fs=require('node:fs');
+const wait=ms=>new Promise(r=>setTimeout(r,ms));
+async function tabTo(page,selector){
+ for(let n=0;n<40;n++){
+  if(await page.evaluate(s=>document.activeElement?.matches(s),selector))return;
+  await page.keyboard.press('Tab');
+ }
+ throw new Error(`Tab did not reach ${selector}`);
+}
+(async()=>{
+ const browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox']});
+ const report={checks:[],errors:[]};
+ try{
+ for(const [width,height] of [[1440,900],[768,1024],[390,844]]){
+  const context=await browser.newContext({viewport:{width,height}});const page=await context.newPage();
+  page.on('pageerror',e=>report.errors.push(e.message));
+  await page.goto('http://127.0.0.1:3002');await wait(1000);
+  assert.equal(await page.locator('.skip-link').evaluate(n=>getComputedStyle(n).clipPath),'inset(50%)');
+  await page.keyboard.press('Tab');
+  assert.equal(await page.evaluate(()=>document.activeElement.className),'skip-link');
+  assert.equal(await page.locator('.skip-link').evaluate(n=>getComputedStyle(n).clipPath),'none');
+  await page.keyboard.press('Enter');
+  assert.equal(await page.evaluate(()=>document.activeElement.id),'main-content');
+  assert.equal(await page.locator('.skip-link').evaluate(n=>getComputedStyle(n).clipPath),'inset(50%)');
+  const ids=await page.locator('[id]').evaluateAll(nodes=>nodes.map(n=>n.id));assert.equal(ids.length,new Set(ids).size);
+  for(let index=0;index<3;index++){
+   const selector=`[data-project="${index}"]`;
+   await tabTo(page,selector);
+   if(await page.locator(selector).getAttribute('data-pos')!=='1'){
+    await page.keyboard.press('Enter');await wait(1000);
+    assert.equal(await page.locator(selector).getAttribute('data-pos'),'1');
+   }
+   await page.keyboard.press('Enter');
+   const title=['Análisis de datos','Portfolio Profesional','SIRIUS'][index];
+   assert.equal(await page.getByRole('dialog',{name:title,exact:true}).count(),1);
+   assert.equal(await page.locator('#case-dialog').getAttribute('aria-labelledby'),'case-title');
+   assert.equal(await page.evaluate(()=>document.activeElement.matches('#case-dialog .close')),true);
+   for(let n=0;n<3;n++){await page.keyboard.press('Tab');assert.equal(await page.evaluate(()=>document.activeElement===document.body || !!document.activeElement.closest('#case-dialog')),true)}
+   await page.keyboard.press('Escape');
+   assert.equal(await page.locator('#case-dialog').evaluate(n=>n.open),false);
+   assert.equal(await page.evaluate(s=>document.activeElement.matches(s),selector),true);
+   await page.keyboard.press('Enter');await page.keyboard.press('Enter');
+   assert.equal(await page.locator('#case-dialog').evaluate(n=>n.open),false);
+  }
+  await tabTo(page,'.catch');
+  for(const reply of ['Casi. Un intento más.','Ya, ahora sí. Te estaba probando.','Una pausa para la curiosidad.']){
+   await page.keyboard.press('Enter');assert.equal(await page.locator('#reply').textContent(),reply);
+  }
+  await tabTo(page,'#contact-button');await page.keyboard.press('Enter');
+  assert.equal(await page.getByRole('dialog',{name:'Conversemos.',exact:true}).count(),1);
+  assert.equal(await page.locator('#contact-dialog').getAttribute('aria-labelledby'),'contact-title');
+  assert.equal(await page.evaluate(()=>document.activeElement.matches('#contact-dialog .close')),true);
+  await page.keyboard.press('Escape');assert.equal(await page.evaluate(()=>document.activeElement.id),'contact-button');
+  await page.keyboard.press('Enter');await page.keyboard.press('Enter');assert.equal(await page.evaluate(()=>document.activeElement.id),'contact-button');
+  await tabTo(page,'.motion');
+  assert.equal(await page.locator('.motion').getAttribute('aria-pressed'),'false');
+  assert.equal(await page.locator('.motion').textContent(),'Reducir movimiento');
+  await page.keyboard.press('Enter');
+  assert.equal(await page.locator('.motion').getAttribute('aria-pressed'),'true');
+  assert.equal(await page.locator('.motion').textContent(),'Activar movimiento');
+  assert.equal(await page.locator('body').evaluate(n=>n.classList.contains('reduced')),true);
+  assert.equal(await page.locator('html').evaluate(n=>getComputedStyle(n).scrollBehavior),'smooth');
+  await page.emulateMedia({reducedMotion:'reduce'});await wait(100);
+  assert.equal(await page.locator('.motion').getAttribute('aria-pressed'),'true');
+  assert.equal(await page.locator('.motion').textContent(),'Movimiento reducido por el sistema');
+  assert.equal(await page.locator('.motion').isDisabled(),true);
+  assert.equal(await page.locator('html').evaluate(n=>getComputedStyle(n).scrollBehavior),'auto');
+  await page.emulateMedia({reducedMotion:'no-preference'});await wait(100);
+  assert.equal(await page.locator('.motion').isEnabled(),true);
+  assert.equal(await page.locator('.motion').getAttribute('aria-pressed'),'true');
+  assert.equal(await page.locator('.motion').textContent(),'Activar movimiento');
+  await tabTo(page,'.motion');
+  await page.keyboard.press('Enter');
+  assert.equal(await page.locator('.motion').getAttribute('aria-pressed'),'false');
+  assert.equal(await page.locator('body').evaluate(n=>n.classList.contains('reduced')),false);
+  await page.emulateMedia({reducedMotion:'reduce'});await wait(100);
+  assert.equal(await page.locator('.motion').getAttribute('aria-pressed'),'true');
+  await page.keyboard.press('Enter');assert.equal(await page.locator('body').evaluate(n=>n.classList.contains('reduced')),false);
+  await page.emulateMedia({reducedMotion:'no-preference'});await wait(100);
+  assert.equal(await page.locator('.motion').getAttribute('aria-pressed'),'false');
+  // Native backdrop behavior is unchanged (separate pointer check after keyboard-only traversal).
+  await page.locator('#contact-button').click();await page.mouse.click(2,2);assert.equal(await page.locator('#contact-dialog').evaluate(n=>n.open),false);
+  await page.locator('[data-project="2"]').click();await page.mouse.click(2,2);assert.equal(await page.locator('#case-dialog').evaluate(n=>n.open),false);
+  report.checks.push({viewport:[width,height],result:'passed',checks:['focus-only skip link','main receives focus','unique IDs','three named case dialogs','contact named dialog','keyboard-only selection/dialog/game/motion','dialog focus containment and restoration','Escape/close/backdrop','manual motion','live system preference changes','manual preference retained under system preference']});
+  await context.close();
+  const reducedContext=await browser.newContext({viewport:{width,height},reducedMotion:'reduce'});const reducedPage=await reducedContext.newPage();
+  await reducedPage.goto('http://127.0.0.1:3002');await reducedPage.waitForFunction(()=>document.querySelector('.motion')?.textContent==='Movimiento reducido por el sistema');
+  assert.equal(await reducedPage.locator('.motion').getAttribute('aria-pressed'),'true');assert.equal(await reducedPage.locator('.motion').isDisabled(),true);
+  const before=await reducedPage.locator('canvas').evaluate(n=>n.toDataURL());await reducedPage.mouse.move(width*.9,height*.1);await wait(150);assert.ok(before===await reducedPage.locator('canvas').evaluate(n=>n.toDataURL()));
+  report.checks.push({viewport:[width,height],result:'passed',checks:['system reduction on initial load','effective label/pressed/disabled','neutral sphere under system preference']});
+  await reducedContext.close();
+ }
+ const context=await browser.newContext(),page=await context.newPage();
+ for(const slug of ['institutional-goals','portfolio','sirius']){
+  assert.equal((await page.goto('http://127.0.0.1:3002/case-studies/'+slug)).status(),200);
+  await page.keyboard.press('Tab');assert.equal(await page.evaluate(()=>document.activeElement.className),'skip-link');await page.keyboard.press('Enter');assert.equal(await page.evaluate(()=>document.activeElement.id),'main-content');
+ }
+ report.checks.push({result:'passed',checks:['skip link on all three retained case routes']});
+ assert.equal(report.errors.length,0);fs.writeFileSync('/tmp/campo-accessibility-report.json',JSON.stringify(report,null,2));console.log('PASS: seven workflows, keyboard-only navigation, named dialogs, live/manual/system reduced motion; no browser errors.');
+ }finally{await browser.close()}
+})().catch(e=>{console.error(e);process.exitCode=1});

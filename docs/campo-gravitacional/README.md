@@ -89,3 +89,27 @@ Recorridos funcionales: [functional-report.json](evidence/functional-report.json
 
 Los dialogs y los estados neutrales también están en `evidence/`. Capturas
 adicionales, estados del juego y vídeos completos están en `/workspace/campo-evidence/`.
+
+## Correcciones de accesibilidad aprobadas después de la transferencia
+
+Estas tres correcciones fueron autorizadas expresamente para cerrar Fase 1:
+
+- Enlace global «Saltar al contenido», visible únicamente al recibir foco. Tanto la portada como las rutas de casos tienen `main-content` y `tabIndex=-1` para recibir el foco.
+- Dialogs con `aria-labelledby`: `case-title` y `contact-title`, sin IDs duplicados. No cambian showModal, cierre, estilos ni gestión nativa de foco.
+- MotionToggle observa `prefers-reduced-motion` con `useSyncExternalStore`. `aria-pressed` representa sistema OR elección manual. Cuando el sistema exige reducción, muestra «Movimiento reducido por el sistema» y queda deshabilitado; al cambiar esa preferencia vuelve a reflejar la elección manual conservada. No se modificaron las animaciones.
+
+Validación posterior sobre build de producción: lint, TypeScript y build pasaron.
+Siete recorridos funcionales completados: navegación solo con teclado a 1440/768/390,
+los tres casos y el dialog de contacto con nombre accesible, Escape/Cerrar/backdrop,
+foco inicial y restauración, juego y botón de movimiento; preferencia del sistema
+inicial y cambios en caliente; preferencia manual conservada. También se verificó
+el enlace de salto en las tres rutas de casos. Sin errores de navegador.
+
+La navegación Tab del dialog nativo puede pasar por la interfaz del navegador
+(reflejada como `document.body` en Chromium); no permite enfocar controles de la
+página detrás del dialog. Se conserva este comportamiento nativo.
+
+Resultado: [accessibility-report.json](evidence/accessibility-report.json).
+Script: `accessibility-check.cjs.txt`, ejecutado como archivo `.cjs` con Playwright
+ya disponible y un servidor de producción en el puerto 3002.
+Las capturas anteriores siguen documentando la transferencia visual aprobada.

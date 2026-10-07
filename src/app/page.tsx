@@ -8,5 +8,5 @@ import Contact from "@/sections/Contact";
 import Footer from "@/components/Footer";
 
 export default function Home() {
-  return <><Navbar /><main><div className="trajectory" aria-hidden="true" /><Hero /><SelectedWork /><Process /><CatchGame /><About /><Contact /></main><Footer /></>;
+  return <><Navbar /><main id="main-content" tabIndex={-1}><div className="trajectory" aria-hidden="true" /><Hero /><SelectedWork /><Process /><CatchGame /><About /><Contact /></main><Footer /></>;
 }
