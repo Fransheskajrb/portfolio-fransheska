@@ -1,0 +1,145 @@
+{
+  "errors": [],
+  "checks": [
+    {
+      "viewport": "desktop",
+      "target": "reference",
+      "result": "passed",
+      "behaviors": [
+        "navigation",
+        "responsive visibility",
+        "three project selections",
+        "three dialogs",
+        "Escape",
+        "close button",
+        "backdrop",
+        "three game states",
+        "manual reduced motion",
+        "pointer response",
+        "system reduced motion"
+      ]
+    },
+    {
+      "viewport": "desktop",
+      "target": "implementation",
+      "result": "passed",
+      "behaviors": [
+        "navigation",
+        "responsive visibility",
+        "three project selections",
+        "three dialogs",
+        "Escape",
+        "close button",
+        "backdrop",
+        "three game states",
+        "manual reduced motion",
+        "pointer response",
+        "system reduced motion"
+      ]
+    },
+    {
+      "viewport": "tablet",
+      "target": "reference",
+      "result": "passed",
+      "behaviors": [
+        "navigation",
+        "responsive visibility",
+        "three project selections",
+        "three dialogs",
+        "Escape",
+        "close button",
+        "backdrop",
+        "three game states",
+        "manual reduced motion",
+        "pointer response",
+        "system reduced motion"
+      ]
+    },
+    {
+      "viewport": "tablet",
+      "target": "implementation",
+      "result": "passed",
+      "behaviors": [
+        "navigation",
+        "responsive visibility",
+        "three project selections",
+        "three dialogs",
+        "Escape",
+        "close button",
+        "backdrop",
+        "three game states",
+        "manual reduced motion",
+        "pointer response",
+        "system reduced motion"
+      ]
+    },
+    {
+      "viewport": "mobile",
+      "target": "reference",
+      "result": "passed",
+      "behaviors": [
+        "navigation",
+        "responsive visibility",
+        "three project selections",
+        "three dialogs",
+        "Escape",
+        "close button",
+        "backdrop",
+        "three game states",
+        "manual reduced motion",
+        "pointer response",
+        "system reduced motion"
+      ]
+    },
+    {
+      "viewport": "mobile",
+      "target": "implementation",
+      "result": "passed",
+      "behaviors": [
+        "navigation",
+        "responsive visibility",
+        "three project selections",
+        "three dialogs",
+        "Escape",
+        "close button",
+        "backdrop",
+        "three game states",
+        "manual reduced motion",
+        "pointer response",
+        "system reduced motion"
+      ]
+    }
+  ],
+  "canvas": [
+    {
+      "viewport": "desktop",
+      "neutral": "pixel-identical"
+    },
+    {
+      "viewport": "tablet",
+      "neutral": "pixel-identical"
+    },
+    {
+      "viewport": "mobile",
+      "neutral": "pixel-identical"
+    }
+  ],
+  "routes": [
+    {
+      "slug": "institutional-goals",
+      "status": 200
+    },
+    {
+      "slug": "portfolio",
+      "status": 200
+    },
+    {
+      "slug": "sirius",
+      "status": 200
+    },
+    {
+      "slug": "nonexistent",
+      "status": 404
+    }
+  ]
+}

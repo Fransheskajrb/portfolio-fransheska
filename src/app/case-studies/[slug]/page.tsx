@@ -33,6 +33,8 @@ export default async function CaseStudyPage({
           {study.category}
         </p>
 
+        <p className="mt-4 text-sm font-semibold">{study.status}</p>
+
         <h1 className="mt-4 text-4xl font-bold tracking-tight text-slate-950 md:text-6xl">
           {study.title}
         </h1>

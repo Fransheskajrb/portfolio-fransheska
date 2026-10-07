@@ -1,0 +1,138 @@
+{
+  "computedStyles": {
+    "desktop": {
+      "equal": true,
+      "components": 10
+    },
+    "tablet": {
+      "equal": true,
+      "components": 10
+    },
+    "mobile": {
+      "equal": true,
+      "components": 10
+    }
+  },
+  "neutralPixels": {
+    "desktop": {
+      "dimensions": [
+        1460,
+        4132
+      ],
+      "changedPixels": 54,
+      "changedPercent": 0.0008951186197933935,
+      "meanChannelDifference": [
+        0.00012200135262369213,
+        0.00011503931891418797,
+        0.00010641965813099232
+      ],
+      "bbox": [
+        1084,
+        1999,
+        1093,
+        2009
+      ]
+    },
+    "tablet": {
+      "dimensions": [
+        858,
+        3838
+      ],
+      "changedPixels": 61,
+      "changedPercent": 0.0018524119618439578,
+      "meanChannelDifference": [
+        0.00034315172407929054,
+        0.00032705699719769545,
+        0.0003054961366582002
+      ],
+      "bbox": [
+        154,
+        1436,
+        323,
+        1960
+      ]
+    },
+    "mobile": {
+      "dimensions": [
+        445,
+        4236
+      ],
+      "changedPixels": 142,
+      "changedPercent": 0.0075330765721318615,
+      "meanChannelDifference": [
+        0.0008265164295339041,
+        0.000797869518625797,
+        0.0007235997496047788
+      ],
+      "bbox": [
+        108,
+        1775,
+        302,
+        1940
+      ]
+    }
+  },
+  "capturePixels": {
+    "desktop": {
+      "dimensions": [
+        1460,
+        4132
+      ],
+      "changedPixels": 54,
+      "changedPercent": 0.0008951186197933935,
+      "meanChannelDifference": [
+        0.00012200135262369213,
+        0.00011503931891418797,
+        0.00010641965813099232
+      ],
+      "bbox": [
+        1084,
+        1999,
+        1093,
+        2009
+      ]
+    },
+    "tablet": {
+      "dimensions": [
+        858,
+        3838
+      ],
+      "changedPixels": 61,
+      "changedPercent": 0.0018524119618439578,
+      "meanChannelDifference": [
+        0.00034315172407929054,
+        0.00032705699719769545,
+        0.0003054961366582002
+      ],
+      "bbox": [
+        154,
+        1436,
+        323,
+        1960
+      ]
+    },
+    "mobile": {
+      "dimensions": [
+        445,
+        4236
+      ],
+      "changedPixels": 13246,
+      "changedPercent": 0.7026981146088636,
+      "meanChannelDifference": [
+        0.025677711642316792,
+        0.024879311625340846,
+        0.023667653393597946
+      ],
+      "bbox": [
+        105,
+        477,
+        435,
+        1940
+      ]
+    }
+  },
+  "browserErrors": {
+    "reference": [],
+    "implementation": []
+  }
+}

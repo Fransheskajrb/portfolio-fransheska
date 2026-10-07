@@ -1,9 +1,10 @@
 export const caseStudies = [
   {
     slug: "sirius",
+    status: "EN DESARROLLO",
     coverImage: "/images/case-studies/sirius-cover.png",
-    featured: true,
-    featuredOrder: 1,
+    featured: false,
+    featuredOrder: 3,
     title: "SIRIUS",
     subtitle: "Plataforma para Gestión de Emergencias Clínicas",
     summary:
@@ -37,9 +38,10 @@ export const caseStudies = [
 
   {
     slug: "institutional-goals",
+    status: "IMPLEMENTADO",
     coverImage: "/images/case-studies/institutional-goals-cover.png",
-    featured: false,
-    featuredOrder: 2,
+    featured: true,
+    featuredOrder: 1,
     title: "Análisis de Metas Institucionales",
     subtitle: "Automatización y análisis para la toma de decisiones",
     summary:
@@ -69,9 +71,10 @@ export const caseStudies = [
 
   {
     slug: "portfolio",
+    status: "EN DESARROLLO",
     coverImage: "/images/case-studies/portfolio-cover.png",
     featured: false,
-    featuredOrder: 3,
+    featuredOrder: 2,
     title: "Portafolio Profesional",
     subtitle: "Construcción de una marca profesional digital",
     summary:
