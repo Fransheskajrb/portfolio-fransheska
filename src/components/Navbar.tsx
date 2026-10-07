@@ -1,10 +1,10 @@
-export default function Navbar() {
+export default function Navbar({ fromCase = false }: { fromCase?: boolean }) {
   return <header>
-    <a className="brand" href="#inicio">FRANSHESKA RUIZ</a>
+    <a className="brand" href={fromCase ? "/#inicio" : "#inicio"}>FRANSHESKA RUIZ</a>
     <nav aria-label="Principal">
-      <a href="#trabajo">Proyectos</a>
-      <a href="#sobre-mi">Sobre mí</a>
-      <a href="#contacto">Contacto</a>
+      <a href={fromCase ? "/#trabajo" : "#trabajo"}>Proyectos</a>
+      <a href={fromCase ? "/#sobre-mi" : "#sobre-mi"}>Sobre mí</a>
+      <a href={fromCase ? "/#contacto" : "#contacto"}>Contacto</a>
     </nav>
   </header>;
 }

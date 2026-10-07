@@ -2,6 +2,7 @@
 
 import { useRef, useState, type ReactNode } from "react";
 import { campoProjects } from "@/data/campoProjects";
+import Link from "next/link";
 import Dialog from "@/components/campo/Dialog";
 
 export default function ProjectSelector({ visuals }: { visuals: ReactNode[] }) {
@@ -34,5 +35,6 @@ export default function ProjectSelector({ visuals }: { visuals: ReactNode[] }) {
   <Dialog id="case-dialog" labelledBy="case-title" dialogRef={dialogRef}>
     <h2 id="case-title">{selected.title}</h2>
     <div id="case-body">{selected.blocks.map((block) => <div key={block.title}><h3>{block.title}</h3><p>{block.text}</p></div>)}</div>
+    <Link className="textlink" href={`/case-studies/${selected.slug}`}>Leer el caso completo</Link>
   </Dialog></>;
 }

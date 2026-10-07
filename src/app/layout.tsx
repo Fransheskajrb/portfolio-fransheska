@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { siteUrl, siteTitle } from "@/lib/siteMetadata";
 
 export const metadata: Metadata = {
-  title: "Fransheska Ruiz · Software, Data, Automation",
+  metadataBase: new URL(siteUrl),
+  title: { default: siteTitle, template: "%s | Fransheska Ruiz" },
+  applicationName: "Portfolio Fransheska Ruiz",
+  authors: [{ name: "Fransheska Ruiz Bonilla" }],
+  robots: { index: true, follow: true },
   description: "Desarrollo de software, datos y automatización. Portfolio de Fransheska Ruiz.",
   icons: { icon: "/assets/favicon-fr.svg" },
 };

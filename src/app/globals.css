@@ -75,3 +75,38 @@ main{z-index:1}footer{position:relative;z-index:1}
 /* Only visible on keyboard focus; leaves the approved composition unchanged. */
 .skip-link{position:fixed;top:16px;left:16px;z-index:100;padding:12px 16px;background:#43474c;color:#f2eee6}
 .skip-link:not(:focus){width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+
+/* Production integrations: scoped to case pages and real-contact dialog. */
+.contact-channels{line-height:1.6;overflow-wrap:anywhere}
+.contact-channels .professional-links{display:flex;flex-wrap:wrap;gap:24px;margin:8px 0}
+.contact-channels .cv-note{font-size:13px;color:#d3d0ca;margin-top:24px}
+.case-page{padding:145px 6% 80px}
+.case-page .case-back{margin-top:0}
+.case-page .case-header{display:grid;grid-template-columns:1.2fr .8fr;gap:8%;align-items:center;margin:55px 0 45px}
+.case-page .case-eyebrow{font-size:13px;letter-spacing:.08em;color:#d3d0ca}
+.case-page .case-title{font-size:clamp(48px,6.5vw,104px);font-weight:600;letter-spacing:-.075em;line-height:.98;margin:28px 0 30px}
+.case-page .case-subtitle{font-size:clamp(24px,2.7vw,38px);letter-spacing:-.04em;line-height:1.15}
+.case-page .case-summary{max-width:630px;font-size:18px;line-height:1.65}
+.case-page .case-visual{position:relative;left:auto;top:auto;width:100%;margin:0;transform:rotate(3deg)}
+.case-page .case-visual .surface{height:300px}
+.case-page .case-facts{display:flex;flex-wrap:wrap;gap:35px 70px;padding:26px 0;border-top:1px solid #c6c2ba55;border-bottom:1px solid #c6c2ba55;margin:0 0 70px}
+.case-page .case-facts dt{font-size:13px;color:#d3d0ca;margin-bottom:8px}
+.case-page .case-facts dd{margin:0;line-height:1.6}
+.case-page .case-reading{display:grid;grid-template-columns:25% 1fr;gap:8%;max-width:1100px}
+.case-page .case-index{display:flex;flex-direction:column;gap:18px;align-items:flex-start;font-size:14px;line-height:1.6}
+.case-page .case-index span{font-size:13px;color:#d3d0ca;margin-right:12px}
+.case-page .case-block{margin-bottom:60px;scroll-margin-top:30px}
+.case-page .case-block h2,.case-page .case-contact h2{font-size:clamp(28px,3vw,42px);letter-spacing:-.04em;line-height:1.15;margin:0 0 24px}
+.case-page .case-block p{font-size:18px;line-height:1.7;max-width:700px}
+.case-page .case-tools{padding-left:20px;line-height:1.9;columns:2}
+.case-page .case-scope{border-left:1px solid #c6c2ba55;padding-left:25px}
+.case-page .case-project-nav{display:flex;flex-wrap:wrap;gap:30px 6%;border-top:1px solid #c6c2ba55;padding-top:35px;margin:35px 0 80px}
+.case-page .case-project-nav a{flex:1;min-width:180px;line-height:1.6;font-size:20px;letter-spacing:-.03em}
+.case-page .case-project-nav span{display:block;font-size:13px;letter-spacing:0;color:#d3d0ca;margin-bottom:12px}
+.case-page .case-project-nav a[aria-current=page]{text-decoration:underline;text-underline-offset:6px}
+.case-page .case-contact{margin-left:33%;max-width:650px;scroll-margin-top:30px}
+.case-page.not-found-page{min-height:85vh}
+@media(max-width:900px){.case-page .case-header{grid-template-columns:1fr;gap:40px}.case-page .case-visual{max-width:540px;margin-left:14%}.case-page .case-reading{grid-template-columns:1fr;gap:45px}.case-page .case-index{flex-direction:row;flex-wrap:wrap;gap:14px 25px}.case-page .case-contact{margin-left:25%}}
+@media(max-width:540px){.case-page{padding:120px 6% 50px}.case-page .case-header{margin-top:40px}.case-page .case-title{font-size:46px;overflow-wrap:anywhere}.case-page .case-visual{margin:0;width:94%}.case-page .case-visual .surface{height:230px}.case-page .case-facts{gap:24px;margin-bottom:45px}.case-page .case-facts>div{width:100%}.case-page .case-block{margin-bottom:45px}.case-page .case-tools{columns:1}.case-page .case-contact{margin-left:9%}.case-page .case-project-nav{margin-bottom:55px}}
+/* The prototype hides the second header link on mobile; case indexes must retain every entry. */
+@media(max-width:540px){.case-page .case-index a:nth-child(2),.case-page .case-project-nav a:nth-child(2){display:block}}

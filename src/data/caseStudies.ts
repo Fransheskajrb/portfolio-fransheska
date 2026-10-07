@@ -2,7 +2,6 @@ export const caseStudies = [
   {
     slug: "sirius",
     status: "EN DESARROLLO",
-    coverImage: "/images/case-studies/sirius-cover.png",
     featured: false,
     featuredOrder: 3,
     title: "SIRIUS",
@@ -39,7 +38,6 @@ export const caseStudies = [
   {
     slug: "institutional-goals",
     status: "IMPLEMENTADO",
-    coverImage: "/images/case-studies/institutional-goals-cover.png",
     featured: true,
     featuredOrder: 1,
     title: "Análisis de Metas Institucionales",
@@ -61,8 +59,8 @@ export const caseStudies = [
     learnings:
       "Este caso reforzó mi interés por transformar datos en un lenguaje comprensible para las organizaciones, conectando análisis, planificación y gestión.",
     tags: [
-      "Power BI",
-      "Excel",
+      "Oracle APEX",
+      "SQL",
       "Análisis de Datos",
       "Automatización",
       "Indicadores",
@@ -72,10 +70,9 @@ export const caseStudies = [
   {
     slug: "portfolio",
     status: "EN DESARROLLO",
-    coverImage: "/images/case-studies/portfolio-cover.png",
     featured: false,
     featuredOrder: 2,
-    title: "Portafolio Profesional",
+    title: "Portfolio Profesional",
     subtitle: "Construcción de una marca profesional digital",
     summary:
       "Sitio web personal desarrollado desde cero para presentar mi experiencia, proyectos y evolución profesional mediante buenas prácticas de desarrollo web moderno.",
@@ -98,6 +95,8 @@ export const caseStudies = [
       "React",
       "TypeScript",
       "Tailwind CSS",
+      "Motion",
+      "UX / Interacción",
       "GitHub",
       "Vercel",
     ],

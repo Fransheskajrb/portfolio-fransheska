@@ -1,10 +1,10 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, type ReactNode } from "react";
 import Dialog from "@/components/campo/Dialog";
 import Reveal from "@/components/campo/Reveal";
 
-export default function Contact() {
+export default function Contact({ channels }: { channels: ReactNode }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   return <><Reveal className="contact" id="contacto">
     <div className="surface-ring" aria-hidden="true" />
@@ -14,6 +14,6 @@ export default function Contact() {
   </Reveal>
   <Dialog id="contact-dialog" labelledBy="contact-title" dialogRef={dialogRef}>
     <h2 id="contact-title">Conversemos.</h2>
-    <p>Este es un prototipo de mi portfolio. El canal de contacto se incorporará en la versión final.</p>
+    {channels}
   </Dialog></>;
 }

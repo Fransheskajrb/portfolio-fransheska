@@ -24,8 +24,8 @@ export const campoProjects: CampoProject[] = [
         "text": "Consultas SQL, organización de registros y seguimiento de metas de capacitación en Oracle APEX."
       },
       {
-        "title": "Qué mostraré en el caso final",
-        "text": "Mi aporte, las decisiones de implementación y evidencia del sistema con datos anonimizados. Los resultados cuantitativos requieren validación antes de publicarse."
+        "title": "Evidencia",
+        "text": "Los resultados cuantitativos requieren validación antes de publicarse."
       }
     ],
     "slug": "institutional-goals",
@@ -48,7 +48,7 @@ export const campoProjects: CampoProject[] = [
       },
       {
         "title": "Estado",
-        "text": "Prototipo en evaluación. La identidad visual final y los casos completos se desarrollarán después de aprobar el recorrido."
+        "text": "Sitio web personal desarrollado desde cero para presentar mi experiencia, proyectos y evolución profesional mediante buenas prácticas de desarrollo web moderno."
       }
     ],
     "slug": "portfolio",

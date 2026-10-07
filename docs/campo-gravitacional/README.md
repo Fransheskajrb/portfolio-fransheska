@@ -113,3 +113,9 @@ Resultado: [accessibility-report.json](evidence/accessibility-report.json).
 Script: `accessibility-check.cjs.txt`, ejecutado como archivo `.cjs` con Playwright
 ya disponible y un servidor de producción en el puerto 3002.
 Las capturas anteriores siguen documentando la transferencia visual aprobada.
+
+## Fase 2
+
+La preparación para producción está documentada por separado en
+[PHASE2.md](PHASE2.md), incluyendo reconciliación de datos, contacto real, SEO,
+QA, nuevas capturas y archivos que aún debe proporcionar la usuaria.
