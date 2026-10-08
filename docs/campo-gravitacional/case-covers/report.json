@@ -1,0 +1,68 @@
+{
+  "lint": "passed",
+  "typescript": "passed",
+  "build": "passed",
+  "results": [
+    {
+      "size": "desktop",
+      "slug": "institutional-goals",
+      "cover": "metas-sanitarias",
+      "secondary": "acreditacion",
+      "layout": "header-facts-cover → gallery → content",
+      "aspectRatio": "original",
+      "labels": "preserved",
+      "http": 200
+    },
+    {
+      "size": "desktop",
+      "slug": "room-management",
+      "cover": "agenda-sala",
+      "secondary": "reportes-sala",
+      "layout": "header-facts-cover → gallery → content",
+      "aspectRatio": "original",
+      "labels": "preserved",
+      "http": 200
+    },
+    {
+      "size": "tablet",
+      "slug": "institutional-goals",
+      "cover": "metas-sanitarias",
+      "secondary": "acreditacion",
+      "layout": "header-facts-cover → gallery → content",
+      "aspectRatio": "original",
+      "labels": "preserved",
+      "http": 200
+    },
+    {
+      "size": "tablet",
+      "slug": "room-management",
+      "cover": "agenda-sala",
+      "secondary": "reportes-sala",
+      "layout": "header-facts-cover → gallery → content",
+      "aspectRatio": "original",
+      "labels": "preserved",
+      "http": 200
+    },
+    {
+      "size": "mobile",
+      "slug": "institutional-goals",
+      "cover": "metas-sanitarias",
+      "secondary": "acreditacion",
+      "layout": "header-facts-cover → gallery → content",
+      "aspectRatio": "original",
+      "labels": "preserved",
+      "http": 200
+    },
+    {
+      "size": "mobile",
+      "slug": "room-management",
+      "cover": "agenda-sala",
+      "secondary": "reportes-sala",
+      "layout": "header-facts-cover → gallery → content",
+      "aspectRatio": "original",
+      "labels": "preserved",
+      "http": 200
+    }
+  ],
+  "browserErrors": []
+}

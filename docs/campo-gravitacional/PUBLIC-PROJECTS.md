@@ -60,3 +60,20 @@ manual, sitemap y rutas archivadas con noindex. Capturas e informe en
 
 Esta selección reemplaza la selección anterior documentada en PHASE2.md. Los
 informes y capturas previos se conservan como evidencia histórica.
+
+## Portadas reales de los casos públicos
+
+El header público ahora presenta título/resumen, facts y una captura real completa:
+
+- Metas: `metas-sanitarias.png` como portada; `acreditacion.png` en «Capturas del sistema».
+- Agenda: `agenda-sala.png` como portada; `reportes-sala.png` en «Capturas del sistema».
+
+Se eligen las vistas de seguimiento y calendario porque muestran directamente la
+función principal de cada proyecto. La galería precede al resto del contenido y
+no duplica la portada. Imágenes sin recorte, proporciones originales, etiquetas y
+aclaraciones conservadas. Home y las rutas archivadas mantienen sus visuales.
+
+Se repitieron lint, TypeScript y build, y se verificaron los dos casos en los tres
+tamaños, imágenes HTTP 200, orden, captions, proporciones y ausencia de overflow.
+Capturas e informe actuales en `case-covers/`; script `case-covers-check.cjs.txt`.
+Las capturas de `public-projects/` preceden este ajuste de portadas.

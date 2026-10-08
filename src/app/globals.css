@@ -119,3 +119,13 @@ main{z-index:1}footer{position:relative;z-index:1}
 .case-evidence img{display:block;width:100%;height:auto}
 .case-evidence figcaption{font-size:13px;line-height:1.6;margin-top:10px;color:#c8c8c5}
 .case-evidence a{display:block}
+
+/* Public case covers retain the complete screenshot at its original aspect ratio. */
+.case-page .case-header--evidence{grid-template-columns:1fr;gap:32px}
+.case-header--evidence .case-title{max-width:1000px}
+.case-header--evidence .case-facts{margin-bottom:0}
+.case-cover{margin:0;max-width:1100px}
+.case-cover a{display:block}
+.case-cover img{display:block;width:100%;height:auto;border:1px solid #c6c2ba55}
+.case-cover figcaption{font-size:13px;line-height:1.6;margin-top:12px;color:#c8c8c5}
+.case-page>article>.case-evidence{max-width:1100px}

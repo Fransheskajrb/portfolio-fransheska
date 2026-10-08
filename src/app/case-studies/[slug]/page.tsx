@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import CaseEvidence from "@/components/campo/CaseEvidence";
+import CaseEvidence, { CaseCover } from "@/components/campo/CaseEvidence";
 import ProjectVisual from "@/components/campo/ProjectVisual";
 import Reveal from "@/components/campo/Reveal";
 import ContactChannels from "@/components/campo/ContactChannels";
@@ -40,28 +40,31 @@ export default async function CaseStudyPage({ params }: Props) {
     { id: "aprendizajes", title: "Aprendizajes", text: study.learnings },
   ].filter((section) => section.text);
 
+  const facts = <dl className="case-facts">
+          {study.year && <div><dt>Año</dt><dd>{study.year}</dd></div>}
+          {study.role && <div><dt>Rol</dt><dd>{study.role}</dd></div>}
+          <div><dt>Área</dt><dd>{study.category}</dd></div>
+        </dl>;
+
   return <>
     <Navbar fromCase />
     <main id="main-content" tabIndex={-1} className="case-page">
       <article>
         <Link className="textlink case-back" href="/#trabajo">← Volver a proyectos</Link>
-        <div className="case-header">
+        <div className={`case-header${isPublic ? " case-header--evidence" : ""}`}>
           <div>
             <p className="case-eyebrow">{isPublic ? `${String(order).padStart(2, "0")} / ` : ""}{study.status}</p>
             <h1 className="case-title">{study.title}</h1>
             <p className="case-subtitle">{study.project.subtitle}</p>
             <p className="case-summary">{study.summary}</p>
           </div>
-          <figure className="case-visual project" data-pos="1">
+          {isPublic ? <>{facts}<CaseCover slug={slug} /></> : <figure className="case-visual project" data-pos="1">
             <ProjectVisual project={study.project} />
             <figcaption className="meta">{study.project.assetTitle} · Visual ilustrativo</figcaption>
-          </figure>
+          </figure>}
         </div>
-        <dl className="case-facts">
-          {study.year && <div><dt>Año</dt><dd>{study.year}</dd></div>}
-          {study.role && <div><dt>Rol</dt><dd>{study.role}</dd></div>}
-          <div><dt>Área</dt><dd>{study.category}</dd></div>
-        </dl>
+        {!isPublic && facts}
+        <CaseEvidence slug={slug} />
         <div className="case-reading">
           <nav className="case-index" aria-label="En este caso">
             {sections.map((section, index) => <a key={section.id} href={`#${section.id}`}>
@@ -72,7 +75,6 @@ export default async function CaseStudyPage({ params }: Props) {
             {sections.map((section) => <Reveal key={section.id} id={section.id} className="case-block">
               <h2>{section.title}</h2><p>{section.text}</p>
             </Reveal>)}
-            <CaseEvidence slug={slug} />
             <section className="case-block" aria-labelledby="case-tools-title">
               <h2 id="case-tools-title">{slug === "sirius" ? "Áreas y enfoques del proyecto" : "Herramientas y enfoque"}</h2>
               <ul className="case-tools">{study.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul>
