@@ -1,0 +1,47 @@
+{
+  "results": [
+    {
+      "width": 1440,
+      "height": 900,
+      "mobileHero": "unchanged desktop/tablet hero",
+      "homeCaptures": "correct, complete, contain, HTTP 200",
+      "selectorsDialogs": "keyboard passed"
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "mobileHero": "unchanged desktop/tablet hero",
+      "homeCaptures": "correct, complete, contain, HTTP 200",
+      "selectorsDialogs": "keyboard passed"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mobileHero": "name/spacing/sphere/navbar bounds passed",
+      "homeCaptures": "correct, complete, contain, HTTP 200",
+      "selectorsDialogs": "keyboard passed"
+    },
+    {
+      "width": 320,
+      "height": 844,
+      "mobileHero": "name/spacing/sphere/navbar bounds passed",
+      "homeCaptures": "correct, complete, contain, HTTP 200",
+      "selectorsDialogs": "keyboard passed"
+    },
+    {
+      "width": 540,
+      "height": 900,
+      "mobileHero": "name/spacing/sphere/navbar bounds passed",
+      "homeCaptures": "correct, complete, contain, HTTP 200",
+      "selectorsDialogs": "keyboard passed"
+    }
+  ],
+  "portfolio": 404,
+  "sirius": "unpromoted/noindex",
+  "sitemap": "two public cases",
+  "browserErrors": [],
+  "openGraph": "pending downloadable approved PNG",
+  "lint": "passed",
+  "typescript": "passed",
+  "build": "passed"
+}

@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { siteUrl, siteTitle } from "@/lib/siteMetadata";
+import { siteUrl, siteTitle, pageMetadata } from "@/lib/siteMetadata";
 
 export const metadata: Metadata = {
+  ...pageMetadata(siteTitle, "Desarrollo de software, datos y automatización. Portfolio de Fransheska Ruiz.", "/"),
   metadataBase: new URL(siteUrl),
   title: { default: siteTitle, template: "%s | Fransheska Ruiz" },
   applicationName: "Portfolio Fransheska Ruiz",

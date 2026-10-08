@@ -1,5 +1,5 @@
 export default function Navbar({ fromCase = false }: { fromCase?: boolean }) {
-  return <header>
+  return <header className={fromCase ? undefined : "home-header"}>
     <a className="brand" href={fromCase ? "/#inicio" : "#inicio"}>FRANSHESKA RUIZ</a>
     <nav aria-label="Principal">
       <a href={fromCase ? "/#trabajo" : "#trabajo"}>Proyectos</a>

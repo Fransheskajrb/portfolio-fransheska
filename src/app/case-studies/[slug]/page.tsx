@@ -16,7 +16,7 @@ type Props = { params: Promise<{ slug: string }> };
 
 export const dynamicParams = false;
 export function generateStaticParams() {
-  return allCampoProjects.map(({ slug }) => ({ slug }));
+  return allCampoProjects.filter(({ slug }) => slug !== "portfolio").map(({ slug }) => ({ slug }));
 }
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
