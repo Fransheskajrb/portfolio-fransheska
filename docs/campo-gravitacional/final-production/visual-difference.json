@@ -1,0 +1,26 @@
+[
+  {
+    "width": 1440,
+    "dimensionsUnchanged": true,
+    "meanAbsoluteRGBDifference": 0.006916966620918248,
+    "p99RGBDifference": 0.0
+  },
+  {
+    "width": 768,
+    "dimensionsUnchanged": true,
+    "meanAbsoluteRGBDifference": 0.06654790669518958,
+    "p99RGBDifference": 1.0
+  },
+  {
+    "width": 390,
+    "dimensionsUnchanged": true,
+    "meanAbsoluteRGBDifference": 0.05085242468731151,
+    "p99RGBDifference": 1.0
+  },
+  {
+    "width": 320,
+    "dimensionsUnchanged": true,
+    "meanAbsoluteRGBDifference": 0.05047490660463805,
+    "p99RGBDifference": 1.0
+  }
+]

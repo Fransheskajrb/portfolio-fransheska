@@ -1,0 +1,90 @@
+{
+  "desktop": {
+    "runs": [
+      {
+        "performance": 91.0,
+        "lcpMs": 1532.3321,
+        "cls": 0,
+        "tbtMs": 153.83394999999996,
+        "transferBytes": 1551031,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 100
+      },
+      {
+        "performance": 88.0,
+        "lcpMs": 1534.5452,
+        "cls": 0,
+        "tbtMs": 210.7274,
+        "transferBytes": 1551031,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 100
+      },
+      {
+        "performance": 91.0,
+        "lcpMs": 1533.3862,
+        "cls": 0,
+        "tbtMs": 153.30690000000004,
+        "transferBytes": 1551031,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 100
+      }
+    ],
+    "median": {
+      "performance": 91.0,
+      "lcpMs": 1533.3862,
+      "cls": 0,
+      "tbtMs": 153.83394999999996,
+      "transferBytes": 1551031,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 100
+    }
+  },
+  "mobile": {
+    "runs": [
+      {
+        "performance": 91.0,
+        "lcpMs": 3316.197,
+        "cls": 0,
+        "tbtMs": 149,
+        "transferBytes": 396723,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 100
+      },
+      {
+        "performance": 90.0,
+        "lcpMs": 3313.4537,
+        "cls": 0,
+        "tbtMs": 181,
+        "transferBytes": 396723,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 100
+      },
+      {
+        "performance": 91.0,
+        "lcpMs": 3163.2863,
+        "cls": 0,
+        "tbtMs": 162,
+        "transferBytes": 396723,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 100
+      }
+    ],
+    "median": {
+      "performance": 91.0,
+      "lcpMs": 3313.4537,
+      "cls": 0,
+      "tbtMs": 162,
+      "transferBytes": 396723,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 100
+    }
+  }
+}

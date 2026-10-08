@@ -1,0 +1,22 @@
+[
+  {
+    "path": "public/images/cases/metas-sanitarias.png",
+    "http": 200,
+    "matchesOriginal": true
+  },
+  {
+    "path": "public/images/cases/acreditacion.png",
+    "http": 200,
+    "matchesOriginal": true
+  },
+  {
+    "path": "public/images/cases/agenda-sala.png",
+    "http": 200,
+    "matchesOriginal": true
+  },
+  {
+    "path": "public/images/cases/reportes-sala.png",
+    "http": 200,
+    "matchesOriginal": true
+  }
+]

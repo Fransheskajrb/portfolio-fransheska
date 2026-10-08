@@ -1,3 +1,5 @@
+> Correcciones y mediciones actuales: [FINAL-PRODUCTION-CHECK.md](./FINAL-PRODUCTION-CHECK.md). Los pendientes de contraste y LCP descritos aquí corresponden a la auditoría anterior.
+
 # Auditoría final — rendimiento, seguridad y producción
 
 Auditoría sobre `redesign/campo-gravitacional`, PR #1 en Draft. Sin merge ni despliegue de producción. Mediciones locales de build de producción; no representan rendimiento de usuarios reales.

@@ -1,0 +1,45 @@
+{
+  "deployments": [
+    {
+      "environment": "Preview",
+      "id": 6936852504,
+      "sha": "2eeb4c79c58bce3c34a3ab1176527bee6184d9dc",
+      "status": "success",
+      "asset": {
+        "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    },
+    {
+      "environment": "Preview",
+      "id": 6936511517,
+      "sha": "6df6fd280bba71a9302caefa0440530f1b569dd3",
+      "status": "success",
+      "asset": {
+        "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    },
+    {
+      "environment": "Preview",
+      "id": 6935906845,
+      "sha": "55545b9282f8bef211f81b0b44aa878053260194",
+      "status": "success",
+      "asset": {
+        "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    },
+    {
+      "environment": "Preview",
+      "id": 6935498760,
+      "sha": "d2927f0461c4888531c6be9d88fe7383f776cc41",
+      "status": "success",
+      "asset": {
+        "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    }
+  ],
+  "githubRaw": {
+    "http": 200,
+    "contentType": "image/png",
+    "sha256": "5c74beed707293353e705cad8b0a82f45311bbe4a7765040dc20da5d6128b729"
+  }
+}

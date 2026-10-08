@@ -64,7 +64,8 @@ body{position:relative;isolation:isolate}
 body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(90deg,#383b4040,transparent 75%),url('/assets/graphite-depth-v2.webp');background-size:cover;background-position:60% 50%;opacity:.42}
 main{z-index:1}footer{position:relative;z-index:1}
 .hero{background:transparent}
-.hero .note{z-index:1}
+.hero .note{z-index:1;color:var(--ink);text-shadow:0 0 1px #383b40,0 0 1px #383b40,0 1px 2px #383b40,0 0 3px #383b40}
+@media(max-width:900px){body::before{background-image:linear-gradient(90deg,#383b4040,transparent 75%),url('/assets/graphite-depth-mobile.webp')}}
 .trajectory,.contact .surface-ring{display:none}
 .systemasset span{border-radius:8px}
 @media(max-width:900px){body::before{background-position:55% 50%;opacity:.33}}

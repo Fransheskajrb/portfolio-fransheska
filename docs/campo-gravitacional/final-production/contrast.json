@@ -1,0 +1,114 @@
+[
+  {
+    "width": 1440,
+    "foreground": "rgb(242, 238, 230)",
+    "minimum": 5.89357849332491,
+    "median": 9.392698186267364,
+    "glyphSamples": 1146
+  },
+  {
+    "width": 1440,
+    "foreground": "rgb(242, 238, 230)",
+    "minimum": 7.213363311238239,
+    "median": 9.526849980895724,
+    "glyphSamples": 1150
+  },
+  {
+    "width": 1440,
+    "foreground": "rgb(242, 238, 230)",
+    "minimum": 6.449175207280777,
+    "median": 9.289080949551765,
+    "glyphSamples": 1145
+  },
+  {
+    "width": 1440,
+    "foreground": "rgb(242, 238, 230)",
+    "minimum": 8.452919906938302,
+    "median": 9.757946035612648,
+    "glyphSamples": 1155
+  },
+  {
+    "width": 768,
+    "foreground": "rgb(242, 238, 230)",
+    "minimum": 7.785630494442098,
+    "median": 9.674296709382673,
+    "glyphSamples": 1161
+  },
+  {
+    "width": 768,
+    "foreground": "rgb(242, 238, 230)",
+    "minimum": 7.959956787788396,
+    "median": 9.674296709382673,
+    "glyphSamples": 1160
+  },
+  {
+    "width": 768,
+    "foreground": "rgb(242, 238, 230)",
+    "minimum": 7.648250233935347,
+    "median": 9.686160777238205,
+    "glyphSamples": 1160
+  },
+  {
+    "width": 768,
+    "foreground": "rgb(242, 238, 230)",
+    "minimum": 7.375150105034299,
+    "median": 9.568417539028447,
+    "glyphSamples": 1156
+  },
+  {
+    "width": 390,
+    "foreground": "rgb(242, 238, 230)",
+    "minimum": 9.237204580726896,
+    "median": 9.88388655452752,
+    "glyphSamples": 1153
+  },
+  {
+    "width": 390,
+    "foreground": "rgb(242, 238, 230)",
+    "minimum": 9.514961927421684,
+    "median": 9.896050083291035,
+    "glyphSamples": 1153
+  },
+  {
+    "width": 390,
+    "foreground": "rgb(242, 238, 230)",
+    "minimum": 9.225637920423045,
+    "median": 9.865970738692377,
+    "glyphSamples": 1153
+  },
+  {
+    "width": 390,
+    "foreground": "rgb(242, 238, 230)",
+    "minimum": 8.576248935826088,
+    "median": 9.865970738692377,
+    "glyphSamples": 1153
+  },
+  {
+    "width": 320,
+    "foreground": "rgb(242, 238, 230)",
+    "minimum": 8.9831401089691,
+    "median": 9.877871627123852,
+    "glyphSamples": 1116
+  },
+  {
+    "width": 320,
+    "foreground": "rgb(242, 238, 230)",
+    "minimum": 9.266307330477789,
+    "median": 9.896050083291035,
+    "glyphSamples": 1116
+  },
+  {
+    "width": 320,
+    "foreground": "rgb(242, 238, 230)",
+    "minimum": 9.09506346284955,
+    "median": 9.865970738692377,
+    "glyphSamples": 1114
+  },
+  {
+    "width": 320,
+    "foreground": "rgb(242, 238, 230)",
+    "minimum": 8.593380636025756,
+    "median": 9.865970738692377,
+    "glyphSamples": 1115
+  }
+]

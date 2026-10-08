@@ -1,0 +1,10 @@
+from PIL import Image
+import numpy as np,json,sys
+stage=sys.argv[1]; rows=json.load(open('/tmp/contrast-'+stage+'-rows.json'));results=[]
+for row in rows:
+ x=np.asarray(Image.open(row['prefix']+'-note.png').convert('RGB')).astype(float);b=np.asarray(Image.open(row['prefix']+'-background.png').convert('RGB')).astype(float);mask=np.max(abs(x-b),2)>40
+ def lum(a):
+  v=a/255;return np.where(v<=.04045,v/12.92,((v+.055)/1.055)**2.4)@np.array([.2126,.7152,.0722])
+ fg=np.array([int(n) for n in row['color'][4:-1].split(',')]);l=lum(b)[mask];f=lum(fg);r=(np.maximum(l,f)+.05)/(np.minimum(l,f)+.05)
+ results.append({'width':row['w'],'foreground':row['color'],'minimum':float(min(r)),'median':float(np.median(r)),'glyphSamples':int(mask.sum())})
+print(json.dumps(results,indent=2));open('/tmp/campo-final-contrast-'+stage+'.json','w').write(json.dumps(results,indent=2))

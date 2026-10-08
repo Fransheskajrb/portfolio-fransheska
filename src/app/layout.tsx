@@ -14,5 +14,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="es"><body><link rel="preload" as="image" fetchPriority="high" href="/assets/graphite-depth-v2.webp" type="image/webp" /><a className="skip-link" href="#main-content">Saltar al contenido</a>{children}</body></html>;
+  return <html lang="es"><body><link rel="preload" as="image" fetchPriority="high" href="/assets/graphite-depth-v2.webp" type="image/webp" media="(width > 900px)" /><link rel="preload" as="image" fetchPriority="high" href="/assets/graphite-depth-mobile.webp" type="image/webp" media="(width <= 900px)" /><a className="skip-link" href="#main-content">Saltar al contenido</a>{children}</body></html>;
 }
