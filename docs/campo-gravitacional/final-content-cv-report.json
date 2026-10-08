@@ -1,0 +1,147 @@
+{
+  "pdf": {
+    "status": 200,
+    "contentType": "application/pdf",
+    "bytes": 32609,
+    "sha256": "dc7f8edd549e94a753813fedfeabbf00fe7633f0ddc3cf11e2d2c872748f81ce",
+    "unchanged": true
+  },
+  "checks": [
+    {
+      "route": "/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "keyboardDownload": true,
+      "sameOrigin": true,
+      "filename": "cv-fransheska-ruiz.pdf",
+      "internalLinks": "passed"
+    },
+    {
+      "route": "/case-studies/institutional-goals",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "keyboardDownload": true,
+      "sameOrigin": true,
+      "filename": "cv-fransheska-ruiz.pdf",
+      "internalLinks": "passed"
+    },
+    {
+      "route": "/case-studies/portfolio",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "keyboardDownload": true,
+      "sameOrigin": true,
+      "filename": "cv-fransheska-ruiz.pdf",
+      "internalLinks": "passed"
+    },
+    {
+      "route": "/case-studies/sirius",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "keyboardDownload": true,
+      "sameOrigin": true,
+      "filename": "cv-fransheska-ruiz.pdf",
+      "internalLinks": "passed"
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "keyboardDownload": true,
+      "sameOrigin": true,
+      "filename": "cv-fransheska-ruiz.pdf",
+      "internalLinks": "passed"
+    },
+    {
+      "route": "/case-studies/institutional-goals",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "keyboardDownload": true,
+      "sameOrigin": true,
+      "filename": "cv-fransheska-ruiz.pdf",
+      "internalLinks": "passed"
+    },
+    {
+      "route": "/case-studies/portfolio",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "keyboardDownload": true,
+      "sameOrigin": true,
+      "filename": "cv-fransheska-ruiz.pdf",
+      "internalLinks": "passed"
+    },
+    {
+      "route": "/case-studies/sirius",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "keyboardDownload": true,
+      "sameOrigin": true,
+      "filename": "cv-fransheska-ruiz.pdf",
+      "internalLinks": "passed"
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "keyboardDownload": true,
+      "sameOrigin": true,
+      "filename": "cv-fransheska-ruiz.pdf",
+      "internalLinks": "passed"
+    },
+    {
+      "route": "/case-studies/institutional-goals",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "keyboardDownload": true,
+      "sameOrigin": true,
+      "filename": "cv-fransheska-ruiz.pdf",
+      "internalLinks": "passed"
+    },
+    {
+      "route": "/case-studies/portfolio",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "keyboardDownload": true,
+      "sameOrigin": true,
+      "filename": "cv-fransheska-ruiz.pdf",
+      "internalLinks": "passed"
+    },
+    {
+      "route": "/case-studies/sirius",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "keyboardDownload": true,
+      "sameOrigin": true,
+      "filename": "cv-fransheska-ruiz.pdf",
+      "internalLinks": "passed"
+    }
+  ],
+  "browserErrors": [],
+  "lint": "passed",
+  "typescript": "passed",
+  "build": "passed"
+}

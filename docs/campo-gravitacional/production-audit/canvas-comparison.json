@@ -1,0 +1,194 @@
+[
+  {
+    "version": "before",
+    "name": "desktop",
+    "run": 0,
+    "active": {
+      "elapsedMs": 46017.80000001192,
+      "draws": 24,
+      "meanDrawMs": 2.479166666045785,
+      "p95DrawMs": 4.200000002980232,
+      "physicalCanvas": [
+        1670,
+        1520
+      ]
+    },
+    "offscreenDraws": 1
+  },
+  {
+    "version": "before",
+    "name": "desktop",
+    "run": 1,
+    "active": {
+      "elapsedMs": 48867.89999999106,
+      "draws": 24,
+      "meanDrawMs": 2.3458333338300386,
+      "p95DrawMs": 3.2999999970197678,
+      "physicalCanvas": [
+        1670,
+        1520
+      ]
+    },
+    "offscreenDraws": 1
+  },
+  {
+    "version": "before",
+    "name": "desktop",
+    "run": 2,
+    "active": {
+      "elapsedMs": 50045.80000001192,
+      "draws": 24,
+      "meanDrawMs": 2.64583333209157,
+      "p95DrawMs": 4.799999997019768,
+      "physicalCanvas": [
+        1670,
+        1520
+      ]
+    },
+    "offscreenDraws": 1
+  },
+  {
+    "version": "before",
+    "name": "mobile",
+    "run": 0,
+    "active": {
+      "elapsedMs": 6761.70000000298,
+      "draws": 24,
+      "meanDrawMs": 2.4166666666666665,
+      "p95DrawMs": 2.7999999970197678,
+      "physicalCanvas": [
+        686,
+        577
+      ]
+    },
+    "offscreenDraws": 1
+  },
+  {
+    "version": "before",
+    "name": "mobile",
+    "run": 1,
+    "active": {
+      "elapsedMs": 7039.79999999702,
+      "draws": 24,
+      "meanDrawMs": 2.4874999995032945,
+      "p95DrawMs": 2.800000011920929,
+      "physicalCanvas": [
+        686,
+        577
+      ]
+    },
+    "offscreenDraws": 1
+  },
+  {
+    "version": "before",
+    "name": "mobile",
+    "run": 2,
+    "active": {
+      "elapsedMs": 7146.399999991059,
+      "draws": 24,
+      "meanDrawMs": 2.654166666790843,
+      "p95DrawMs": 3.2000000029802322,
+      "physicalCanvas": [
+        686,
+        577
+      ]
+    },
+    "offscreenDraws": 1
+  },
+  {
+    "version": "after",
+    "name": "desktop",
+    "run": 0,
+    "active": {
+      "elapsedMs": 1159.7999999970198,
+      "draws": 24,
+      "meanDrawMs": 6.041666666045785,
+      "p95DrawMs": 6.200000002980232,
+      "physicalCanvas": [
+        1253,
+        1140
+      ]
+    },
+    "offscreenDraws": 0
+  },
+  {
+    "version": "after",
+    "name": "desktop",
+    "run": 1,
+    "active": {
+      "elapsedMs": 1128.5,
+      "draws": 24,
+      "meanDrawMs": 5.662499997764826,
+      "p95DrawMs": 6.200000002980232,
+      "physicalCanvas": [
+        1253,
+        1140
+      ]
+    },
+    "offscreenDraws": 0
+  },
+  {
+    "version": "after",
+    "name": "desktop",
+    "run": 2,
+    "active": {
+      "elapsedMs": 1105,
+      "draws": 24,
+      "meanDrawMs": 6.049999998882413,
+      "p95DrawMs": 6.5999999940395355,
+      "physicalCanvas": [
+        1253,
+        1140
+      ]
+    },
+    "offscreenDraws": 0
+  },
+  {
+    "version": "after",
+    "name": "mobile",
+    "run": 0,
+    "active": {
+      "elapsedMs": 431.40000000596046,
+      "draws": 24,
+      "meanDrawMs": 2.6999999967714152,
+      "p95DrawMs": 3.2000000029802322,
+      "physicalCanvas": [
+        686,
+        577
+      ]
+    },
+    "offscreenDraws": 0
+  },
+  {
+    "version": "after",
+    "name": "mobile",
+    "run": 1,
+    "active": {
+      "elapsedMs": 387.6000000089407,
+      "draws": 24,
+      "meanDrawMs": 2.8166666651765504,
+      "p95DrawMs": 3.2999999970197678,
+      "physicalCanvas": [
+        686,
+        577
+      ]
+    },
+    "offscreenDraws": 0
+  },
+  {
+    "version": "after",
+    "name": "mobile",
+    "run": 2,
+    "active": {
+      "elapsedMs": 404.20000000298023,
+      "draws": 24,
+      "meanDrawMs": 3.22916666790843,
+      "p95DrawMs": 5.4000000059604645,
+      "physicalCanvas": [
+        686,
+        577
+      ]
+    },
+    "offscreenDraws": 0
+  }
+]

@@ -1,27 +1,17 @@
-import Hero from "@/sections/Hero";
-import About from "@/sections/About";
-import WhatIDo from "@/sections/WhatIDo";
+import { pageMetadata, siteTitle } from "@/lib/siteMetadata";
+import { hasCvPdf } from "@/lib/cvAvailability";
+import ContactChannels from "@/components/campo/ContactChannels";
 import Navbar from "@/components/Navbar";
-import Experience from "@/sections/Experience";
-import Skills from "@/sections/Skills";
-import Education from "@/sections/Education";
+import Hero from "@/sections/Hero";
+import SelectedWork from "@/sections/SelectedWork";
+import Process from "@/sections/Process";
+import CatchGame from "@/components/campo/CatchGame";
+import About from "@/sections/About";
 import Contact from "@/sections/Contact";
 import Footer from "@/components/Footer";
-import BackToTopButton from "@/components/BackToTopButton";
+
+export const metadata = pageMetadata(siteTitle, "Desarrollo de software, datos y automatización. Portfolio de Fransheska Ruiz.", "/");
 
 export default function Home() {
-  return (
-    <main className="min-h-screen bg-slate-50 text-slate-900">
-      <Navbar />
-      <Hero />
-      <About />
-      <WhatIDo />
-      <Experience />
-      <Skills />
-      <Education />
-      <Contact />
-      <Footer />
-      <BackToTopButton />
-    </main>
-  );
+  return <><Navbar /><main id="main-content" tabIndex={-1}><div className="trajectory" aria-hidden="true" /><Hero /><SelectedWork /><Process /><CatchGame /><About /><Contact channels={<ContactChannels cvAvailable={hasCvPdf()} />} /></main><Footer /></>;
 }

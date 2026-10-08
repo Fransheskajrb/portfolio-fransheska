@@ -1,0 +1,76 @@
+const {chromium}=require('playwright');
+const assert=require('node:assert/strict'),fs=require('node:fs');
+const root='/tmp/campo-validation';fs.mkdirSync(root,{recursive:true});
+const wait=ms=>new Promise(r=>setTimeout(r,ms));
+(async()=>{
+ const browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox']});
+ const report={errors:[],checks:[],canvas:[],routes:[]};
+ try{
+ for(const [name,width,height] of [['desktop',1440,900],['tablet',768,1024],['mobile',390,844]]){
+  const neutral=[];
+  for(const [target,url] of [['reference','http://127.0.0.1:3100/source/index.html'],['implementation','http://127.0.0.1:3000']]){
+   const context=await browser.newContext({viewport:{width,height},deviceScaleFactor:1});const page=await context.newPage();
+   page.on('pageerror',e=>report.errors.push({name,target,message:e.message}));
+   await page.goto(url);await wait(1100);
+   const initialCanvas=await page.locator('canvas').evaluate(n=>n.toDataURL());
+   await page.mouse.move(width*.9,height*.2);await wait(1800);
+   assert.ok(await page.locator('canvas').evaluate(n=>n.toDataURL())!==initialCanvas,'fresh viewport pointer response');
+   assert.equal(await page.locator('html').getAttribute('lang'),'es');
+   assert.equal(await page.locator('header').evaluate(n=>getComputedStyle(n).position),'absolute');
+   assert.equal(await page.locator('header nav a').count(),3);
+   assert.equal(await page.locator('header nav a').nth(1).isVisible(),width>540);
+   assert.equal(await page.locator('[data-select="0"]').isVisible(),width>900);
+   for(let i=0;i<3;i++){
+    const card=page.locator(`[data-project="${i}"]`);
+    if(await card.getAttribute('data-pos')!=='1')await card.click();
+    await wait(1000);
+    assert.equal(await card.getAttribute('data-pos'),'1');
+    assert.equal(await page.locator('#status').textContent(),i===0?'IMPLEMENTADO':'EN DESARROLLO');
+    if(width>900){await page.locator(`[data-select="${i}"]`).click();assert.equal(await page.locator(`[data-select="${i}"]`).getAttribute('aria-pressed'),'true')}
+    await card.click();
+    assert.equal(await page.locator('#case-dialog').evaluate(n=>n.open),true);
+    assert.equal(await page.locator('#case-title').textContent(),['Análisis de datos','Portfolio Profesional','SIRIUS'][i]);
+    await page.screenshot({path:`${root}/${name}-${target}-dialog-${i}.png`});
+    await page.keyboard.press('Escape');
+    assert.equal(await page.locator('#case-dialog').evaluate(n=>n.open),false);
+    await card.click();await page.locator('#case-dialog .close').click();
+    assert.equal(await page.locator('#case-dialog').evaluate(n=>n.open),false);
+   }
+   await page.locator('[data-project="0"]').click();await wait(1000);
+   for(const [reply,symbol] of [['Casi. Un intento más.','·'],['Ya, ahora sí. Te estaba probando.','✓'],['Una pausa para la curiosidad.','·']]){
+    await page.locator('.catch').click();await wait(750);
+    assert.equal(await page.locator('#reply').textContent(),reply);assert.equal(await page.locator('.catch').textContent(),symbol);
+   }
+   await page.locator('#contact-button').click();
+   assert.equal(await page.locator('#contact-dialog').evaluate(n=>n.open),true);
+   await page.mouse.click(2,2);
+   assert.equal(await page.locator('#contact-dialog').evaluate(n=>n.open),false);
+   await page.locator('.motion').click();assert.equal(await page.locator('.motion').getAttribute('aria-pressed'),'true');
+   assert.equal(await page.locator('.motion').textContent(),'Activar movimiento');
+   assert.equal(await page.locator('html').evaluate(n=>getComputedStyle(n).scrollBehavior),'smooth');
+   await page.evaluate(()=>window.scrollTo({top:0,behavior:'instant'}));await wait(300);
+   const canvas=await page.locator('canvas').evaluate(n=>n.toDataURL());neutral.push(canvas);
+   await page.screenshot({path:`${root}/${name}-${target}-neutral.png`,fullPage:true});
+   await page.mouse.move(width-5,height-5);await wait(150);
+   assert.ok(await page.locator('canvas').evaluate(n=>n.toDataURL())===canvas,'manual reduced motion must hold sphere neutral');
+   await page.locator('.motion').click();await page.evaluate(()=>window.scrollTo({top:0,behavior:'instant'}));await wait(200);
+   await page.mouse.move(width*.9,height*.2);await wait(1800);
+   
+   await page.emulateMedia({reducedMotion:'reduce'});await wait(150);
+   assert.equal(await page.locator('html').evaluate(n=>getComputedStyle(n).scrollBehavior),'auto');
+   assert.equal(await page.locator('.reveal').first().evaluate(n=>getComputedStyle(n).opacity),'1');
+   const systemCanvas=await page.locator('canvas').evaluate(n=>n.toDataURL());
+   await page.mouse.move(1,1);await wait(150);
+   assert.ok(await page.locator('canvas').evaluate(n=>n.toDataURL())===systemCanvas,'system reduced motion must hold sphere neutral');
+   report.checks.push({viewport:name,target,result:'passed',behaviors:['navigation','responsive visibility','three project selections','three dialogs','Escape','close button','backdrop','three game states','manual reduced motion','pointer response','system reduced motion']});
+   await context.close();
+  }
+  assert.ok(neutral[0]===neutral[1],`${name}: neutral sphere must match exactly`);report.canvas.push({viewport:name,neutral:'pixel-identical'});
+ }
+ const context=await browser.newContext(),page=await context.newPage();
+ for(const slug of ['institutional-goals','portfolio','sirius']){const response=await page.goto(`http://127.0.0.1:3000/case-studies/${slug}`);assert.equal(response.status(),200);report.routes.push({slug,status:200})}
+ const response=await page.goto('http://127.0.0.1:3000/case-studies/nonexistent');assert.equal(response.status(),404);report.routes.push({slug:'nonexistent',status:404});
+ await context.close();assert.equal(report.errors.length,0);
+ fs.writeFileSync(root+'/report.json',JSON.stringify(report,null,2));console.log('PASS: six viewport/target workflows, neutral Canvas equality, four routes; no browser errors.');
+ }finally{await browser.close()}
+})().catch(e=>{console.error(e);process.exitCode=1});

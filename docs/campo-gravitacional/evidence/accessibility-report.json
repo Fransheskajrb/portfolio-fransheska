@@ -1,0 +1,107 @@
+{
+  "checks": [
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "result": "passed",
+      "checks": [
+        "focus-only skip link",
+        "main receives focus",
+        "unique IDs",
+        "three named case dialogs",
+        "contact named dialog",
+        "keyboard-only selection/dialog/game/motion",
+        "dialog focus containment and restoration",
+        "Escape/close/backdrop",
+        "manual motion",
+        "live system preference changes",
+        "manual preference retained under system preference"
+      ]
+    },
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "result": "passed",
+      "checks": [
+        "system reduction on initial load",
+        "effective label/pressed/disabled",
+        "neutral sphere under system preference"
+      ]
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "result": "passed",
+      "checks": [
+        "focus-only skip link",
+        "main receives focus",
+        "unique IDs",
+        "three named case dialogs",
+        "contact named dialog",
+        "keyboard-only selection/dialog/game/motion",
+        "dialog focus containment and restoration",
+        "Escape/close/backdrop",
+        "manual motion",
+        "live system preference changes",
+        "manual preference retained under system preference"
+      ]
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "result": "passed",
+      "checks": [
+        "system reduction on initial load",
+        "effective label/pressed/disabled",
+        "neutral sphere under system preference"
+      ]
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "result": "passed",
+      "checks": [
+        "focus-only skip link",
+        "main receives focus",
+        "unique IDs",
+        "three named case dialogs",
+        "contact named dialog",
+        "keyboard-only selection/dialog/game/motion",
+        "dialog focus containment and restoration",
+        "Escape/close/backdrop",
+        "manual motion",
+        "live system preference changes",
+        "manual preference retained under system preference"
+      ]
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "result": "passed",
+      "checks": [
+        "system reduction on initial load",
+        "effective label/pressed/disabled",
+        "neutral sphere under system preference"
+      ]
+    },
+    {
+      "result": "passed",
+      "checks": [
+        "skip link on all three retained case routes"
+      ]
+    }
+  ],
+  "errors": []
+}

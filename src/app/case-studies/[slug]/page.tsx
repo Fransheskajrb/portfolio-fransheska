@@ -1,97 +1,101 @@
-import { caseStudies } from "@/data/caseStudies";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import CaseEvidence, { CaseCover } from "@/components/campo/CaseEvidence";
+import ProjectVisual from "@/components/campo/ProjectVisual";
+import Reveal from "@/components/campo/Reveal";
+import ContactChannels from "@/components/campo/ContactChannels";
+import { campoProjects, allCampoProjects } from "@/data/campoProjects";
+import { getCaseStudy } from "@/lib/caseStudy";
+import { hasCvPdf } from "@/lib/cvAvailability";
+import { pageMetadata } from "@/lib/siteMetadata";
 
-type CaseStudyPageProps = {
-  params: Promise<{
-    slug: string;
-  }>;
-};
+type Props = { params: Promise<{ slug: string }> };
 
-export default async function CaseStudyPage({
-  params,
-}: CaseStudyPageProps) {
+export const dynamicParams = false;
+export function generateStaticParams() {
+  return allCampoProjects.filter(({ slug }) => slug !== "portfolio").map(({ slug }) => ({ slug }));
+}
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
+  const study = getCaseStudy(slug);
+  if (!study) notFound();
+  return { ...pageMetadata(study.title, study.project.description, `/case-studies/${slug}`), ...(!campoProjects.some((project) => project.slug === slug) ? { robots: { index: false, follow: false } } : {}) };
+}
 
-  const study = caseStudies.find((item) => item.slug === slug);
+export default async function CaseStudyPage({ params }: Props) {
+  const { slug } = await params;
+  const study = getCaseStudy(slug);
+  if (!study) notFound();
+  const order = campoProjects.findIndex((project) => project.slug === slug) + 1;
+  const isPublic = campoProjects.some((project) => project.slug === slug);
+  const sections = [
+    { id: "contexto", title: "Contexto", text: study.context },
+    { id: "desafio", title: "El desafío", text: study.challenge },
+    { id: "trabajo", title: study.project.blocks[1].title, text: study.project.blocks[1].text },
+    { id: "investigacion", title: "Investigación", text: study.research },
+    { id: "propuesta", title: slug === "room-management" ? "Reportes administrativos" : "La propuesta", text: study.proposal },
+    { id: "aprendizajes", title: "Aprendizajes", text: study.learnings },
+  ].filter((section) => section.text);
 
-  if (!study) {
-    notFound();
-  }
+  const facts = <dl className="case-facts">
+          {study.year && <div><dt>Año</dt><dd>{study.year}</dd></div>}
+          {study.role && <div><dt>Rol</dt><dd>{study.role}</dd></div>}
+          <div><dt>Área</dt><dd>{study.category}</dd></div>
+        </dl>;
 
-  return (
-    <main className="bg-slate-50 px-6 py-28">
-      <article className="mx-auto max-w-4xl">
-        <Link
-          href="/"
-          className="text-sm font-semibold text-[#0F4C5C] transition hover:text-[#12343B]"
-        >
-          ← Volver al portafolio
-        </Link>
-
-        <p className="mt-10 text-sm font-semibold uppercase tracking-[0.3em] text-teal-700">
-          {study.category}
-        </p>
-
-        <h1 className="mt-4 text-4xl font-bold tracking-tight text-slate-950 md:text-6xl">
-          {study.title}
-        </h1>
-
-        <h2 className="mt-4 text-2xl font-semibold text-slate-700">
-          {study.subtitle}
-        </h2>
-
-        <p className="mt-6 text-lg leading-8 text-slate-600">
-          {study.summary}
-        </p>
-
-        <div className="mt-8 flex flex-wrap gap-3 text-sm text-slate-600">
-          <span>{study.year}</span>
-          <span>•</span>
-          <span>{study.role}</span>
-          <span>•</span>
-          <span>{study.readingTime}</span>
+  return <>
+    <Navbar fromCase />
+    <main id="main-content" tabIndex={-1} className="case-page">
+      <article>
+        <Link className="textlink case-back" href="/#trabajo">← Volver a proyectos</Link>
+        <div className={`case-header${isPublic ? " case-header--evidence" : ""}`}>
+          <div>
+            <p className="case-eyebrow">{isPublic ? `${String(order).padStart(2, "0")} / ` : ""}{study.status}</p>
+            <h1 className="case-title">{study.title}</h1>
+            <p className="case-subtitle">{study.project.subtitle}</p>
+            <p className="case-summary">{study.summary}</p>
+          </div>
+          {isPublic ? <>{facts}<CaseCover slug={slug} /></> : <figure className="case-visual project" data-pos="1">
+            <ProjectVisual project={study.project} />
+            <figcaption className="meta">{study.project.assetTitle} · Visual ilustrativo</figcaption>
+          </figure>}
         </div>
-
-        <div className="mt-10 rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-teal-700">
-            Caso de estudio
-          </p>
-
-          <div className="mt-6 flex flex-wrap gap-2">
-            {study.tags.map((tag) => (
-              <span
-                key={tag}
-                className="rounded-full bg-slate-100 px-3 py-1 text-sm font-medium text-slate-700"
-              >
-                {tag}
-              </span>
-            ))}
+        {!isPublic && facts}
+        <CaseEvidence slug={slug} />
+        <div className="case-reading">
+          <nav className="case-index" aria-label="En este caso">
+            {sections.map((section, index) => <a key={section.id} href={`#${section.id}`}>
+              <span>{String(index + 1).padStart(2, "0")}</span>{section.title}
+            </a>)}
+          </nav>
+          <div className="case-text">
+            {sections.map((section) => <Reveal key={section.id} id={section.id} className="case-block">
+              <h2>{section.title}</h2><p>{section.text}</p>
+            </Reveal>)}
+            <section className="case-block" aria-labelledby="case-tools-title">
+              <h2 id="case-tools-title">{slug === "sirius" ? "Áreas y enfoques del proyecto" : "Herramientas y enfoque"}</h2>
+              <ul className="case-tools">{study.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul>
+            </section>
+            <section className="case-block case-scope" aria-labelledby="case-scope-title">
+              <h2 id="case-scope-title">{study.project.blocks[2].title}</h2>
+              <p>{study.project.blocks[2].text}</p>
+            </section>
           </div>
         </div>
-
-        <section className="mt-16 space-y-12">
-          <CaseBlock title="Contexto" content={study.context} />
-          <CaseBlock title="El desafío" content={study.challenge} />
-          <CaseBlock title="Investigación" content={study.research} />
-          <CaseBlock title="La propuesta" content={study.proposal} />
-          <CaseBlock title="Aprendizajes" content={study.learnings} />
+        <nav className="case-project-nav" aria-label="Casos de estudio">
+          {campoProjects.map((project, index) => <Link key={project.slug} href={`/case-studies/${project.slug}`} aria-current={project.slug === slug ? "page" : undefined}>
+            <span>{String(index + 1).padStart(2, "0")} / {project.status}</span>{project.title}
+          </Link>)}
+        </nav>
+        <section className="case-contact" id="contacto" aria-labelledby="case-contact-title">
+          <h2 id="case-contact-title">Conversemos.</h2>
+          <ContactChannels cvAvailable={hasCvPdf()} />
         </section>
       </article>
     </main>
-  );
-}
-
-type CaseBlockProps = {
-  title: string;
-  content: string;
-};
-
-function CaseBlock({ title, content }: CaseBlockProps) {
-  return (
-    <div>
-      <h3 className="text-2xl font-bold text-slate-950">{title}</h3>
-      <p className="mt-4 text-lg leading-8 text-slate-600">{content}</p>
-    </div>
-  );
+    <Footer />
+  </>;
 }

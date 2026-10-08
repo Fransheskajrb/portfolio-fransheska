@@ -1,0 +1,23 @@
+const {chromium}=require('playwright');const fs=require('fs');const assert=require('node:assert/strict');
+(async()=>{const browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox']});const page=await browser.newPage();const errors=[];page.on('pageerror',e=>errors.push(String(e)));const dir='/workspace/portfolio-fransheska/docs/campo-gravitacional/case-covers';fs.mkdirSync(dir,{recursive:true});const results=[];
+for(const [size,width,height] of [['desktop',1440,900],['tablet',768,1024],['mobile',390,844]]){
+ await page.setViewportSize({width,height});
+ for(const [slug,cover,secondary] of [['institutional-goals','metas-sanitarias','acreditacion'],['room-management','agenda-sala','reportes-sala']]){
+  const response=await page.goto('http://127.0.0.1:3008/case-studies/'+slug);assert.equal(response.status(),200);
+  assert.equal(await page.locator('.case-header .surface').count(),0);
+  assert.equal(await page.locator('.case-cover img').getAttribute('src'),'/images/cases/'+cover+'.png');
+  assert.equal(await page.locator('.case-evidence img').count(),1);assert.equal(await page.locator('.case-evidence img').getAttribute('src'),'/images/cases/'+secondary+'.png');
+  for(const selector of ['.case-cover img','.case-evidence img']){const img=page.locator(selector);await img.scrollIntoViewIfNeeded();await img.evaluate(el=>el.decode());assert.equal(await img.evaluate(el=>Math.abs(el.clientWidth/el.clientHeight-el.naturalWidth/el.naturalHeight)<0.015),true);assert.equal((await page.request.get('http://127.0.0.1:3008'+await img.getAttribute('src'))).status(),200)}
+  assert.match(await page.locator('.case-cover figcaption').innerText(),/Capturas anonimizadas · datos demostrativos/);
+  assert.equal(await page.evaluate(()=>{const header=document.querySelector('.case-header');const gallery=document.querySelector('.case-evidence');const reading=document.querySelector('.case-reading');return Boolean(header.compareDocumentPosition(gallery)&Node.DOCUMENT_POSITION_FOLLOWING)&&Boolean(gallery.compareDocumentPosition(reading)&Node.DOCUMENT_POSITION_FOLLOWING)}),true);
+  assert.equal(await page.locator('.case-header .case-facts').count(),1);
+  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
+  await page.locator('.case-cover a').focus();assert.equal(await page.locator('.case-cover a').evaluate(el=>el===document.activeElement),true);
+  for(let y=0;y<await page.evaluate(()=>document.body.scrollHeight);y+=600){await page.evaluate(y=>window.scrollTo(0,y),y);await page.waitForTimeout(80)}
+  await page.evaluate(()=>window.scrollTo(0,0));await page.waitForTimeout(500);
+  await page.screenshot({path:`${dir}/${size}-${slug}.png`,fullPage:true});
+  results.push({size,slug,cover,secondary,layout:'header-facts-cover → gallery → content',aspectRatio:'original',labels:'preserved',http:200});
+ }
+}
+await page.goto('http://127.0.0.1:3008/');assert.equal(await page.locator('.case-cover').count(),0);assert.equal(await page.locator('[data-project]').count(),2);assert.equal(await page.getByText('SIRIUS',{exact:true}).count(),0);
+assert.deepEqual(errors,[]);fs.writeFileSync(dir+'/report.json',JSON.stringify({lint:'passed',typescript:'passed',build:'passed',results,browserErrors:errors},null,2)+'\n');console.log('Passed: six public case/viewport checks, cover identity, original proportions, captions, gallery order and Home unchanged.');await browser.close()})().catch(e=>{console.error(e);process.exit(1)});

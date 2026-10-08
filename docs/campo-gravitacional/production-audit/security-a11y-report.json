@@ -1,0 +1,88 @@
+{
+  "results": [
+    {
+      "width": 1440,
+      "route": "/",
+      "headers": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; frame-src 'none'; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self'",
+      "axeViolations": [],
+      "axeIncomplete": [
+        "color-contrast"
+      ]
+    },
+    {
+      "width": 1440,
+      "route": "/case-studies/institutional-goals",
+      "headers": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; frame-src 'none'; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self'",
+      "axeViolations": [],
+      "axeIncomplete": [
+        "color-contrast"
+      ]
+    },
+    {
+      "width": 1440,
+      "route": "/case-studies/room-management",
+      "headers": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; frame-src 'none'; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self'",
+      "axeViolations": [],
+      "axeIncomplete": [
+        "color-contrast"
+      ]
+    },
+    {
+      "width": 768,
+      "route": "/",
+      "headers": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; frame-src 'none'; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self'",
+      "axeViolations": [],
+      "axeIncomplete": [
+        "color-contrast"
+      ]
+    },
+    {
+      "width": 768,
+      "route": "/case-studies/institutional-goals",
+      "headers": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; frame-src 'none'; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self'",
+      "axeViolations": [],
+      "axeIncomplete": [
+        "color-contrast"
+      ]
+    },
+    {
+      "width": 768,
+      "route": "/case-studies/room-management",
+      "headers": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; frame-src 'none'; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self'",
+      "axeViolations": [],
+      "axeIncomplete": [
+        "color-contrast"
+      ]
+    },
+    {
+      "width": 390,
+      "route": "/",
+      "headers": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; frame-src 'none'; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self'",
+      "axeViolations": [],
+      "axeIncomplete": [
+        "color-contrast"
+      ]
+    },
+    {
+      "width": 390,
+      "route": "/case-studies/institutional-goals",
+      "headers": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; frame-src 'none'; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self'",
+      "axeViolations": [],
+      "axeIncomplete": [
+        "color-contrast"
+      ]
+    },
+    {
+      "width": 390,
+      "route": "/case-studies/room-management",
+      "headers": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; frame-src 'none'; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self'",
+      "axeViolations": [],
+      "axeIncomplete": [
+        "color-contrast"
+      ]
+    }
+  ],
+  "cspErrors": [],
+  "keyboardDialogs": "passed",
+  "reducedMotion": "passed"
+}

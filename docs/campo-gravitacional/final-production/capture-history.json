@@ -1,0 +1,154 @@
+[
+  {
+    "path": "public/images/cases/metas-sanitarias.png",
+    "changedPixelBounds": [
+      477,
+      12,
+      525,
+      35
+    ],
+    "exifOriginal": 0,
+    "personalEmailRegex": [],
+    "rutRegex": [],
+    "versions": [
+      {
+        "commit": "d2927f0461c4888531c6be9d88fe7383f776cc41",
+        "blob": "5d57f3addc109db6dea0ba02a61c3b45789ec556"
+      },
+      {
+        "commit": "55545b9282f8bef211f81b0b44aa878053260194",
+        "blob": "5d57f3addc109db6dea0ba02a61c3b45789ec556"
+      },
+      {
+        "commit": "6df6fd280bba71a9302caefa0440530f1b569dd3",
+        "blob": "5d57f3addc109db6dea0ba02a61c3b45789ec556"
+      },
+      {
+        "commit": "2eeb4c79c58bce3c34a3ab1176527bee6184d9dc",
+        "blob": "5d57f3addc109db6dea0ba02a61c3b45789ec556"
+      },
+      {
+        "commit": "f60e164210e3a125198ae3d760cb6d5da5b6d6ea",
+        "blob": "cb14a7ce0dde892b6c14a29936930a022935e960"
+      },
+      {
+        "commit": "1a6aea485b69280c585dd530618b4981ca53a89e",
+        "blob": "cb14a7ce0dde892b6c14a29936930a022935e960"
+      }
+    ]
+  },
+  {
+    "path": "public/images/cases/acreditacion.png",
+    "changedPixelBounds": [
+      438,
+      10,
+      484,
+      33
+    ],
+    "exifOriginal": 0,
+    "personalEmailRegex": [],
+    "rutRegex": [],
+    "versions": [
+      {
+        "commit": "d2927f0461c4888531c6be9d88fe7383f776cc41",
+        "blob": "a2fa15f89021a458b120ae9239ea5ecfe7d835b8"
+      },
+      {
+        "commit": "55545b9282f8bef211f81b0b44aa878053260194",
+        "blob": "a2fa15f89021a458b120ae9239ea5ecfe7d835b8"
+      },
+      {
+        "commit": "6df6fd280bba71a9302caefa0440530f1b569dd3",
+        "blob": "a2fa15f89021a458b120ae9239ea5ecfe7d835b8"
+      },
+      {
+        "commit": "2eeb4c79c58bce3c34a3ab1176527bee6184d9dc",
+        "blob": "a2fa15f89021a458b120ae9239ea5ecfe7d835b8"
+      },
+      {
+        "commit": "f60e164210e3a125198ae3d760cb6d5da5b6d6ea",
+        "blob": "b70cbc824392ccf1db63f44bd3a181d71c023ca2"
+      },
+      {
+        "commit": "1a6aea485b69280c585dd530618b4981ca53a89e",
+        "blob": "b70cbc824392ccf1db63f44bd3a181d71c023ca2"
+      }
+    ]
+  },
+  {
+    "path": "public/images/cases/agenda-sala.png",
+    "changedPixelBounds": [
+      14,
+      14,
+      78,
+      77
+    ],
+    "exifOriginal": 0,
+    "personalEmailRegex": [],
+    "rutRegex": [],
+    "versions": [
+      {
+        "commit": "d2927f0461c4888531c6be9d88fe7383f776cc41",
+        "blob": "6c8b98af65b5570e36da6a77dee7c426bacf8e74"
+      },
+      {
+        "commit": "55545b9282f8bef211f81b0b44aa878053260194",
+        "blob": "6c8b98af65b5570e36da6a77dee7c426bacf8e74"
+      },
+      {
+        "commit": "6df6fd280bba71a9302caefa0440530f1b569dd3",
+        "blob": "6c8b98af65b5570e36da6a77dee7c426bacf8e74"
+      },
+      {
+        "commit": "2eeb4c79c58bce3c34a3ab1176527bee6184d9dc",
+        "blob": "6c8b98af65b5570e36da6a77dee7c426bacf8e74"
+      },
+      {
+        "commit": "f60e164210e3a125198ae3d760cb6d5da5b6d6ea",
+        "blob": "037bee91a2ac432a219950a0245483ba8f78422a"
+      },
+      {
+        "commit": "1a6aea485b69280c585dd530618b4981ca53a89e",
+        "blob": "037bee91a2ac432a219950a0245483ba8f78422a"
+      }
+    ]
+  },
+  {
+    "path": "public/images/cases/reportes-sala.png",
+    "changedPixelBounds": [
+      19,
+      14,
+      80,
+      78
+    ],
+    "exifOriginal": 0,
+    "personalEmailRegex": [],
+    "rutRegex": [],
+    "versions": [
+      {
+        "commit": "d2927f0461c4888531c6be9d88fe7383f776cc41",
+        "blob": "f1b5f6695712b08edcc7b5db5e8a893fc581b7bd"
+      },
+      {
+        "commit": "55545b9282f8bef211f81b0b44aa878053260194",
+        "blob": "f1b5f6695712b08edcc7b5db5e8a893fc581b7bd"
+      },
+      {
+        "commit": "6df6fd280bba71a9302caefa0440530f1b569dd3",
+        "blob": "f1b5f6695712b08edcc7b5db5e8a893fc581b7bd"
+      },
+      {
+        "commit": "2eeb4c79c58bce3c34a3ab1176527bee6184d9dc",
+        "blob": "f1b5f6695712b08edcc7b5db5e8a893fc581b7bd"
+      },
+      {
+        "commit": "f60e164210e3a125198ae3d760cb6d5da5b6d6ea",
+        "blob": "1849d2b52504f9a82fb1cd33a8cebbf9427e4cc4"
+      },
+      {
+        "commit": "1a6aea485b69280c585dd530618b4981ca53a89e",
+        "blob": "1849d2b52504f9a82fb1cd33a8cebbf9427e4cc4"
+      }
+    ]
+  }
+]

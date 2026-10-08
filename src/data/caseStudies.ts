@@ -1,19 +1,38 @@
 export const caseStudies = [
   {
-    slug: "sirius",
-    coverImage: "/images/case-studies/sirius-cover.png",
+    slug: "room-management",
+    status: "IMPLEMENTADO",
     featured: true,
-    featuredOrder: 1,
+    featuredOrder: 2,
+    title: "Agenda de Sala / Gestión de Sala",
+    subtitle: "Reservas, disponibilidad y reportes administrativos",
+    summary: "Gestión de sala con vistas de agenda y reportes administrativos. Las capturas compartidas muestran información protegida y valores demostrativos.",
+    year: "",
+    role: "",
+    category: "Gestión de Sala",
+    readingTime: "",
+    context: "La agenda muestra disponibilidad y reservas de sala en un calendario. La navegación incluye solicitudes, aprobaciones y gestión de sala y materiales.",
+    challenge: "",
+    research: "",
+    proposal: "Los reportes administrativos permiten seleccionar periodo y estado, con opciones de descarga en Excel y generación de PDF. La vista indica que los datos provienen de solicitudes registradas en Supabase.",
+    learnings: "",
+    tags: ["Supabase", "Reservas", "Disponibilidad", "Aprobaciones", "Reportes administrativos"],
+  },
+  {
+    slug: "sirius",
+    status: "EN DESARROLLO",
+    featured: false,
+    featuredOrder: 3,
     title: "SIRIUS",
     subtitle: "Plataforma para Gestión de Emergencias Clínicas",
     summary:
       "Proyecto académico desarrollado a partir de una necesidad detectada por el equipo TIC de un hospital público chileno, orientado al análisis y diseño de una solución digital para apoyar la activación y coordinación del Código Azul.",
     year: "2026",
-    role: "Product Owner · Analista Funcional",
+    role: "Product Owner · Analista Funcional · Enlace con el hospital",
     category: "Transformación Digital en Salud",
     readingTime: "8 min",
     context:
-      "El proyecto nace a partir de una necesidad identificada por el equipo de Tecnologías de la Información de un hospital público chileno, relacionada con la optimización de procesos críticos de coordinación clínica.",
+      "El proyecto nace a partir de una necesidad identificada por el equipo de Tecnologías de la Información de un hospital público chileno, relacionada con la optimización de procesos críticos de coordinación clínica. Como Product Owner del proyecto académico, participo como enlace entre el hospital y el equipo de desarrollo mediante el levantamiento de necesidades, la aclaración y traducción de requerimientos y la comunicación del contexto institucional hacia el equipo. Esta participación corresponde al proyecto académico y no a un cargo formal del hospital.",
     challenge:
       "Analizar un proceso clínico crítico e identificar oportunidades para apoyar digitalmente la activación, coordinación y seguimiento de equipos de respuesta, sin exponer información sensible de la institución.",
     research:
@@ -37,15 +56,15 @@ export const caseStudies = [
 
   {
     slug: "institutional-goals",
-    coverImage: "/images/case-studies/institutional-goals-cover.png",
-    featured: false,
-    featuredOrder: 2,
+    status: "IMPLEMENTADO",
+    featured: true,
+    featuredOrder: 1,
     title: "Análisis de Metas Institucionales",
     subtitle: "Automatización y análisis para la toma de decisiones",
     summary:
       "Caso orientado a transformar datos institucionales en información útil para la planificación, seguimiento de brechas y toma de decisiones dentro de una unidad organizacional.",
     year: "2025",
-    role: "Analista de Datos",
+    role: "Diseño, desarrollo y análisis de datos",
     category: "Datos y Gestión",
     readingTime: "5 min",
     context:
@@ -59,8 +78,8 @@ export const caseStudies = [
     learnings:
       "Este caso reforzó mi interés por transformar datos en un lenguaje comprensible para las organizaciones, conectando análisis, planificación y gestión.",
     tags: [
-      "Power BI",
-      "Excel",
+      "Oracle APEX",
+      "SQL",
       "Análisis de Datos",
       "Automatización",
       "Indicadores",
@@ -69,10 +88,10 @@ export const caseStudies = [
 
   {
     slug: "portfolio",
-    coverImage: "/images/case-studies/portfolio-cover.png",
+    status: "EN DESARROLLO",
     featured: false,
-    featuredOrder: 3,
-    title: "Portafolio Profesional",
+    featuredOrder: 2,
+    title: "Portfolio Profesional",
     subtitle: "Construcción de una marca profesional digital",
     summary:
       "Sitio web personal desarrollado desde cero para presentar mi experiencia, proyectos y evolución profesional mediante buenas prácticas de desarrollo web moderno.",
@@ -95,6 +114,8 @@ export const caseStudies = [
       "React",
       "TypeScript",
       "Tailwind CSS",
+      "Motion",
+      "UX / Interacción",
       "GitHub",
       "Vercel",
     ],

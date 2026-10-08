@@ -1,0 +1,58 @@
+[
+  {
+    "file": "public/images/cases/metas-sanitarias.png",
+    "redactedRegions": [
+      [
+        477,
+        12,
+        524,
+        34
+      ]
+    ],
+    "allOtherPixelsUnchanged": true,
+    "exif": 0,
+    "sha256": "0b9be88a9f580e83488ac68c90092148d5173672c0deba009c0472a2c398ebf8"
+  },
+  {
+    "file": "public/images/cases/acreditacion.png",
+    "redactedRegions": [
+      [
+        438,
+        10,
+        483,
+        32
+      ]
+    ],
+    "allOtherPixelsUnchanged": true,
+    "exif": 0,
+    "sha256": "2af5a60ee8a9d32e8fd547fa38590fa060ee5139fefc0f145453636b61a08914"
+  },
+  {
+    "file": "public/images/cases/agenda-sala.png",
+    "redactedRegions": [
+      [
+        14,
+        14,
+        77,
+        76
+      ]
+    ],
+    "allOtherPixelsUnchanged": true,
+    "exif": 0,
+    "sha256": "2948ad8c4b9a49ba2c7406a226a1d18bfbe676fcbba276f4ebb277be1a9abc80"
+  },
+  {
+    "file": "public/images/cases/reportes-sala.png",
+    "redactedRegions": [
+      [
+        19,
+        14,
+        79,
+        77
+      ]
+    ],
+    "allOtherPixelsUnchanged": true,
+    "exif": 0,
+    "sha256": "cb9d8d2e0736e9e011dd19af201e84e5e98647c2930595e9509c775ff8c5dcb2"
+  }
+]

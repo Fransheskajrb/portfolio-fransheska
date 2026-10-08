@@ -1,0 +1,464 @@
+{
+  "pages": [
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "route": "/",
+      "status": 200,
+      "title": "Fransheska Ruiz · Software, Data, Automation",
+      "canonical": "https://www.fransheskaruiz.com/",
+      "screenshot": "desktop-home.png"
+    },
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "route": "/case-studies/institutional-goals",
+      "status": 200,
+      "title": "Análisis de datos | Fransheska Ruiz",
+      "canonical": "https://www.fransheskaruiz.com/case-studies/institutional-goals",
+      "screenshot": "desktop-institutional-goals.png"
+    },
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "route": "/case-studies/portfolio",
+      "status": 200,
+      "title": "Portfolio Profesional | Fransheska Ruiz",
+      "canonical": "https://www.fransheskaruiz.com/case-studies/portfolio",
+      "screenshot": "desktop-portfolio.png"
+    },
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "route": "/case-studies/sirius",
+      "status": 200,
+      "title": "SIRIUS | Fransheska Ruiz",
+      "canonical": "https://www.fransheskaruiz.com/case-studies/sirius",
+      "screenshot": "desktop-sirius.png"
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "route": "/",
+      "status": 200,
+      "title": "Fransheska Ruiz · Software, Data, Automation",
+      "canonical": "https://www.fransheskaruiz.com/",
+      "screenshot": "tablet-home.png"
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "route": "/case-studies/institutional-goals",
+      "status": 200,
+      "title": "Análisis de datos | Fransheska Ruiz",
+      "canonical": "https://www.fransheskaruiz.com/case-studies/institutional-goals",
+      "screenshot": "tablet-institutional-goals.png"
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "route": "/case-studies/portfolio",
+      "status": 200,
+      "title": "Portfolio Profesional | Fransheska Ruiz",
+      "canonical": "https://www.fransheskaruiz.com/case-studies/portfolio",
+      "screenshot": "tablet-portfolio.png"
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "route": "/case-studies/sirius",
+      "status": 200,
+      "title": "SIRIUS | Fransheska Ruiz",
+      "canonical": "https://www.fransheskaruiz.com/case-studies/sirius",
+      "screenshot": "tablet-sirius.png"
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "route": "/",
+      "status": 200,
+      "title": "Fransheska Ruiz · Software, Data, Automation",
+      "canonical": "https://www.fransheskaruiz.com/",
+      "screenshot": "mobile-home.png"
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "route": "/case-studies/institutional-goals",
+      "status": 200,
+      "title": "Análisis de datos | Fransheska Ruiz",
+      "canonical": "https://www.fransheskaruiz.com/case-studies/institutional-goals",
+      "screenshot": "mobile-institutional-goals.png"
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "route": "/case-studies/portfolio",
+      "status": 200,
+      "title": "Portfolio Profesional | Fransheska Ruiz",
+      "canonical": "https://www.fransheskaruiz.com/case-studies/portfolio",
+      "screenshot": "mobile-portfolio.png"
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "route": "/case-studies/sirius",
+      "status": 200,
+      "title": "SIRIUS | Fransheska Ruiz",
+      "canonical": "https://www.fransheskaruiz.com/case-studies/sirius",
+      "screenshot": "mobile-sirius.png"
+    }
+  ],
+  "keyboard": [
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "result": "passed",
+      "checks": [
+        "skip",
+        "Home -> three full cases -> Home",
+        "TOC anchors",
+        "real contact channels",
+        "dialog focus/escape/restore"
+      ]
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "result": "passed",
+      "checks": [
+        "skip",
+        "Home -> three full cases -> Home",
+        "TOC anchors",
+        "real contact channels",
+        "dialog focus/escape/restore"
+      ]
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "result": "passed",
+      "checks": [
+        "skip",
+        "Home -> three full cases -> Home",
+        "TOC anchors",
+        "real contact channels",
+        "dialog focus/escape/restore"
+      ]
+    }
+  ],
+  "reduced": [
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "route": "/",
+      "result": "passed"
+    },
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "route": "/case-studies/institutional-goals",
+      "result": "passed"
+    },
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "route": "/case-studies/portfolio",
+      "result": "passed"
+    },
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "route": "/case-studies/sirius",
+      "result": "passed"
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "route": "/",
+      "result": "passed"
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "route": "/case-studies/institutional-goals",
+      "result": "passed"
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "route": "/case-studies/portfolio",
+      "result": "passed"
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "route": "/case-studies/sirius",
+      "result": "passed"
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "route": "/",
+      "result": "passed"
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "route": "/case-studies/institutional-goals",
+      "result": "passed"
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "route": "/case-studies/portfolio",
+      "result": "passed"
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "route": "/case-studies/sirius",
+      "result": "passed"
+    }
+  ],
+  "links": [
+    {
+      "url": "/",
+      "status": 200
+    },
+    {
+      "url": "/",
+      "status": 200
+    },
+    {
+      "url": "/",
+      "status": 200
+    },
+    {
+      "url": "/",
+      "status": 200
+    },
+    {
+      "url": "/",
+      "status": 200
+    },
+    {
+      "url": "/case-studies/institutional-goals",
+      "status": 200
+    },
+    {
+      "url": "mailto:fransheskaruizbonilla@gmail.com",
+      "checked": "existing destination and safe attributes; external availability checked separately"
+    },
+    {
+      "url": "https://www.linkedin.com/in/fransheska-ruiz-127438276",
+      "checked": "existing destination and safe attributes; external availability checked separately"
+    },
+    {
+      "url": "https://github.com/Fransheskajrb",
+      "checked": "existing destination and safe attributes; external availability checked separately"
+    },
+    {
+      "url": "/case-studies/institutional-goals",
+      "status": 200
+    },
+    {
+      "url": "/case-studies/institutional-goals",
+      "status": 200
+    },
+    {
+      "url": "/case-studies/institutional-goals",
+      "status": 200
+    },
+    {
+      "url": "/case-studies/institutional-goals",
+      "status": 200
+    },
+    {
+      "url": "/case-studies/institutional-goals",
+      "status": 200
+    },
+    {
+      "url": "/case-studies/institutional-goals",
+      "status": 200
+    },
+    {
+      "url": "/case-studies/institutional-goals",
+      "status": 200
+    },
+    {
+      "url": "/case-studies/portfolio",
+      "status": 200
+    },
+    {
+      "url": "/case-studies/sirius",
+      "status": 200
+    },
+    {
+      "url": "/case-studies/portfolio",
+      "status": 200
+    },
+    {
+      "url": "/case-studies/portfolio",
+      "status": 200
+    },
+    {
+      "url": "/case-studies/portfolio",
+      "status": 200
+    },
+    {
+      "url": "/case-studies/portfolio",
+      "status": 200
+    },
+    {
+      "url": "/case-studies/portfolio",
+      "status": 200
+    },
+    {
+      "url": "/case-studies/portfolio",
+      "status": 200
+    },
+    {
+      "url": "/case-studies/portfolio",
+      "status": 200
+    },
+    {
+      "url": "/case-studies/sirius",
+      "status": 200
+    },
+    {
+      "url": "/case-studies/sirius",
+      "status": 200
+    },
+    {
+      "url": "/case-studies/sirius",
+      "status": 200
+    },
+    {
+      "url": "/case-studies/sirius",
+      "status": 200
+    },
+    {
+      "url": "/case-studies/sirius",
+      "status": 200
+    },
+    {
+      "url": "/case-studies/sirius",
+      "status": 200
+    },
+    {
+      "url": "/case-studies/sirius",
+      "status": 200
+    }
+  ],
+  "seo": {
+    "sitemap": {
+      "status": 200,
+      "urls": [
+        "https://www.fransheskaruiz.com/",
+        "https://www.fransheskaruiz.com/case-studies/institutional-goals",
+        "https://www.fransheskaruiz.com/case-studies/portfolio",
+        "https://www.fransheskaruiz.com/case-studies/sirius"
+      ]
+    },
+    "robots": {
+      "status": 200,
+      "text": "User-Agent: *\nAllow: /\n\nSitemap: https://www.fransheskaruiz.com/sitemap.xml\n"
+    },
+    "socialImage": "absent: textual OG and Twitter summary only",
+    "cv": "absent: no download href rendered"
+  },
+  "errors": [],
+  "homeGeometry": {
+    "desktop": "identical to approved Phase 1",
+    "tablet": "identical to approved Phase 1",
+    "mobile": "identical to approved Phase 1"
+  },
+  "externalAvailability": {
+    "github": {
+      "url": "https://github.com/Fransheskajrb",
+      "status": 200
+    },
+    "linkedin": {
+      "url": "https://www.linkedin.com/in/fransheska-ruiz-127438276",
+      "result": "Unverified externally: proxy tunnel 403 Forbidden"
+    },
+    "email": {
+      "result": "mailto URI verified; message delivery not tested"
+    }
+  },
+  "specificMetadata": [
+    {
+      "slug": "institutional-goals",
+      "title": "Análisis de datos | Fransheska Ruiz",
+      "description": "SQL y Oracle APEX para organizar información y seguir indicadores de capacitación.",
+      "result": "passed"
+    },
+    {
+      "slug": "portfolio",
+      "title": "Portfolio Profesional | Fransheska Ruiz",
+      "description": "Identidad profesional, experiencia de uso y desarrollo de una web que conecte presencia con evidencia.",
+      "result": "passed"
+    },
+    {
+      "slug": "sirius",
+      "title": "SIRIUS | Fransheska Ruiz",
+      "description": "Proyecto académico enfocado en activación y gestión de Código Azul. Una línea secundaria de trabajo.",
+      "result": "passed"
+    }
+  ]
+}

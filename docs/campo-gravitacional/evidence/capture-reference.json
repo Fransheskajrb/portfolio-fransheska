@@ -1,0 +1,41 @@
+{
+  "createdAt": "2026-10-07T18:10:14.651Z",
+  "zoom": "100%",
+  "deviceScaleFactor": 1,
+  "captures": [
+    "capturas/desktop-1440-full-page.png",
+    "capturas/desktop-navbar.png",
+    "capturas/desktop-hero.png",
+    "capturas/desktop-software-data-automation.png",
+    "capturas/desktop-selected-work.png",
+    "capturas/desktop-recorrido.png",
+    "capturas/desktop-me-pillas.png",
+    "capturas/desktop-sobre-mi.png",
+    "capturas/desktop-experiencia.png",
+    "capturas/desktop-contacto.png",
+    "capturas/desktop-footer.png",
+    "estados/desktop-project-0-active.png",
+    "estados/desktop-project-1-active.png",
+    "estados/desktop-project-2-active.png",
+    "capturas/tablet-768-full-page.png",
+    "capturas/mobile-390-full-page.png",
+    "capturas/mobile-navbar.png",
+    "capturas/mobile-hero.png",
+    "capturas/mobile-software-data-automation.png",
+    "capturas/mobile-selected-work.png",
+    "capturas/mobile-recorrido.png",
+    "capturas/mobile-me-pillas.png",
+    "capturas/mobile-sobre-mi.png",
+    "capturas/mobile-experiencia.png",
+    "capturas/mobile-contacto.png",
+    "capturas/mobile-footer.png",
+    "estados/mobile-project-0-active.png",
+    "estados/mobile-project-1-active.png",
+    "estados/mobile-project-2-active.png"
+  ],
+  "unimplemented": [
+    "menu-mobile-open",
+    "sticky-navbar"
+  ],
+  "errors": []
+}
