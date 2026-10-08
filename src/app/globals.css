@@ -110,3 +110,12 @@ main{z-index:1}footer{position:relative;z-index:1}
 @media(max-width:540px){.case-page{padding:120px 6% 50px}.case-page .case-header{margin-top:40px}.case-page .case-title{font-size:46px;overflow-wrap:anywhere}.case-page .case-visual{margin:0;width:94%}.case-page .case-visual .surface{height:230px}.case-page .case-facts{gap:24px;margin-bottom:45px}.case-page .case-facts>div{width:100%}.case-page .case-block{margin-bottom:45px}.case-page .case-tools{columns:1}.case-page .case-contact{margin-left:9%}.case-page .case-project-nav{margin-bottom:55px}}
 /* The prototype hides the second header link on mobile; case indexes must retain every entry. */
 @media(max-width:540px){.case-page .case-index a:nth-child(2),.case-page .case-project-nav a:nth-child(2){display:block}}
+
+/* Calendar illustration uses the existing project surface and palette. */
+.agendaasset{height:75%;margin-top:16px;display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.agendaasset i{border:1px solid #737983;border-radius:2px}
+.agendaasset i:nth-child(4n){background:#737983}
+.case-evidence figure{margin:28px 0}
+.case-evidence img{display:block;width:100%;height:auto}
+.case-evidence figcaption{font-size:13px;line-height:1.6;margin-top:10px;color:#c8c8c5}
+.case-evidence a{display:block}

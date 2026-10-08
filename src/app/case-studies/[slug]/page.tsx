@@ -3,10 +3,11 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import CaseEvidence from "@/components/campo/CaseEvidence";
 import ProjectVisual from "@/components/campo/ProjectVisual";
 import Reveal from "@/components/campo/Reveal";
 import ContactChannels from "@/components/campo/ContactChannels";
-import { campoProjects } from "@/data/campoProjects";
+import { campoProjects, allCampoProjects } from "@/data/campoProjects";
 import { getCaseStudy } from "@/lib/caseStudy";
 import { hasCvPdf } from "@/lib/cvAvailability";
 import { pageMetadata } from "@/lib/siteMetadata";
@@ -15,13 +16,13 @@ type Props = { params: Promise<{ slug: string }> };
 
 export const dynamicParams = false;
 export function generateStaticParams() {
-  return campoProjects.map(({ slug }) => ({ slug }));
+  return allCampoProjects.map(({ slug }) => ({ slug }));
 }
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const study = getCaseStudy(slug);
   if (!study) notFound();
-  return pageMetadata(study.title, study.project.description, `/case-studies/${slug}`);
+  return { ...pageMetadata(study.title, study.project.description, `/case-studies/${slug}`), ...(!campoProjects.some((project) => project.slug === slug) ? { robots: { index: false, follow: false } } : {}) };
 }
 
 export default async function CaseStudyPage({ params }: Props) {
@@ -29,14 +30,15 @@ export default async function CaseStudyPage({ params }: Props) {
   const study = getCaseStudy(slug);
   if (!study) notFound();
   const order = campoProjects.findIndex((project) => project.slug === slug) + 1;
+  const isPublic = campoProjects.some((project) => project.slug === slug);
   const sections = [
     { id: "contexto", title: "Contexto", text: study.context },
     { id: "desafio", title: "El desafío", text: study.challenge },
     { id: "trabajo", title: study.project.blocks[1].title, text: study.project.blocks[1].text },
     { id: "investigacion", title: "Investigación", text: study.research },
-    { id: "propuesta", title: "La propuesta", text: study.proposal },
+    { id: "propuesta", title: slug === "room-management" ? "Reportes administrativos" : "La propuesta", text: study.proposal },
     { id: "aprendizajes", title: "Aprendizajes", text: study.learnings },
-  ];
+  ].filter((section) => section.text);
 
   return <>
     <Navbar fromCase />
@@ -45,7 +47,7 @@ export default async function CaseStudyPage({ params }: Props) {
         <Link className="textlink case-back" href="/#trabajo">← Volver a proyectos</Link>
         <div className="case-header">
           <div>
-            <p className="case-eyebrow">{String(order).padStart(2, "0")} / {study.status}</p>
+            <p className="case-eyebrow">{isPublic ? `${String(order).padStart(2, "0")} / ` : ""}{study.status}</p>
             <h1 className="case-title">{study.title}</h1>
             <p className="case-subtitle">{study.project.subtitle}</p>
             <p className="case-summary">{study.summary}</p>
@@ -56,8 +58,8 @@ export default async function CaseStudyPage({ params }: Props) {
           </figure>
         </div>
         <dl className="case-facts">
-          <div><dt>Año</dt><dd>{study.year}</dd></div>
-          <div><dt>Rol</dt><dd>{study.role}</dd></div>
+          {study.year && <div><dt>Año</dt><dd>{study.year}</dd></div>}
+          {study.role && <div><dt>Rol</dt><dd>{study.role}</dd></div>}
           <div><dt>Área</dt><dd>{study.category}</dd></div>
         </dl>
         <div className="case-reading">
@@ -70,6 +72,7 @@ export default async function CaseStudyPage({ params }: Props) {
             {sections.map((section) => <Reveal key={section.id} id={section.id} className="case-block">
               <h2>{section.title}</h2><p>{section.text}</p>
             </Reveal>)}
+            <CaseEvidence slug={slug} />
             <section className="case-block" aria-labelledby="case-tools-title">
               <h2 id="case-tools-title">{slug === "sirius" ? "Áreas y enfoques del proyecto" : "Herramientas y enfoque"}</h2>
               <ul className="case-tools">{study.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul>

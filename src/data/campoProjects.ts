@@ -5,13 +5,13 @@ export type CampoProject = {
   slug: string;
   assetTitle: string;
   subtitle: string;
-  visual: "data" | "web" | "system";
+  visual: "data" | "web" | "system" | "agenda";
   blocks: { title: string; text: string }[];
 };
 
-export const campoProjects: CampoProject[] = [
+const archivedProjects: CampoProject[] = [
   {
-    "title": "Análisis de datos",
+    "title": "Análisis de Metas Institucionales",
     "status": "IMPLEMENTADO",
     "description": "SQL y Oracle APEX para organizar información y seguir indicadores de capacitación.",
     "blocks": [
@@ -25,7 +25,7 @@ export const campoProjects: CampoProject[] = [
       },
       {
         "title": "Evidencia",
-        "text": "Los resultados cuantitativos requieren validación antes de publicarse."
+        "text": "Capturas anonimizadas · datos demostrativos · valores institucionales protegidos. Los valores mostrados no representan resultados reales."
       }
     ],
     "slug": "institutional-goals",
@@ -80,3 +80,23 @@ export const campoProjects: CampoProject[] = [
     "visual": "system"
   }
 ];
+
+const roomProject: CampoProject = {
+  title: "Agenda de Sala / Gestión de Sala",
+  status: "IMPLEMENTADO",
+  description: "Gestión de reservas y disponibilidad de sala, aprobaciones y reportes administrativos.",
+  slug: "room-management",
+  assetTitle: "Agenda / disponibilidad / reportes",
+  subtitle: "Reservas · Aprobaciones · Reportes administrativos",
+  visual: "agenda",
+  blocks: [
+    { title: "La agenda", text: "Vista de calendario con disponibilidad y reservas protegidas de la sala." },
+    { title: "La gestión", text: "Solicitudes, aprobaciones, gestión de sala y materiales y reportes administrativos." },
+    { title: "Evidencia", text: "Capturas anonimizadas · datos demostrativos · información protegida. Los valores mostrados no representan resultados reales." },
+  ],
+};
+
+// Only these projects are promoted in Home, case navigation and the sitemap.
+export const campoProjects: CampoProject[] = [archivedProjects[0], roomProject];
+// Preserve existing routes without promoting or indexing archived projects.
+export const allCampoProjects: CampoProject[] = [...archivedProjects, roomProject];

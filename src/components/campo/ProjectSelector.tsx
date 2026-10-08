@@ -24,7 +24,7 @@ export default function ProjectSelector({ visuals }: { visuals: ReactNode[] }) {
         <button id="details" onClick={openCase}>Explorar el caso</button>
       </div>
       {campoProjects.map((project, index) => <button className="project" key={project.slug}
-        data-project={index} data-pos={index === active ? 1 : index === (active + 1) % 3 ? 0 : 2}
+        data-project={index} data-pos={index === active ? 1 : index === (active + 1) % campoProjects.length ? 0 : 2}
         aria-label={`Seleccionar ${project.title}`}
         onClick={() => index === active ? openCase() : setActive(index)}>
         {visuals[index]}

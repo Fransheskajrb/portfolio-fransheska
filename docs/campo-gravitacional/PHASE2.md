@@ -1,5 +1,8 @@
 # Fase 2 — preparación para producción
 
+> Selección pública posterior: véase [PUBLIC-PROJECTS.md](PUBLIC-PROJECTS.md).
+> Las tres rutas y capturas descritas debajo corresponden a la entrega inicial.
+
 ## Alcance implementado
 
 Las tres rutas originales ahora pertenecen al sistema Campo gravitacional:

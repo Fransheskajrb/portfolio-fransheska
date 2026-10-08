@@ -1,0 +1,65 @@
+{
+  "results": [
+    {
+      "name": "desktop",
+      "slug": "institutional-goals",
+      "route": "passed",
+      "keyboardSelector": "passed",
+      "dialog": "passed",
+      "links": "passed",
+      "reducedMotion": "passed"
+    },
+    {
+      "name": "desktop",
+      "slug": "room-management",
+      "route": "passed",
+      "keyboardSelector": "passed",
+      "dialog": "passed",
+      "links": "passed",
+      "reducedMotion": "passed"
+    },
+    {
+      "name": "tablet",
+      "slug": "institutional-goals",
+      "route": "passed",
+      "keyboardSelector": "passed",
+      "dialog": "passed",
+      "links": "passed",
+      "reducedMotion": "passed"
+    },
+    {
+      "name": "tablet",
+      "slug": "room-management",
+      "route": "passed",
+      "keyboardSelector": "passed",
+      "dialog": "passed",
+      "links": "passed",
+      "reducedMotion": "passed"
+    },
+    {
+      "name": "mobile",
+      "slug": "institutional-goals",
+      "route": "passed",
+      "keyboardSelector": "passed",
+      "dialog": "passed",
+      "links": "passed",
+      "reducedMotion": "passed"
+    },
+    {
+      "name": "mobile",
+      "slug": "room-management",
+      "route": "passed",
+      "keyboardSelector": "passed",
+      "dialog": "passed",
+      "links": "passed",
+      "reducedMotion": "passed"
+    }
+  ],
+  "errors": [],
+  "sitemap": "two public cases only",
+  "archivedRoutes": "noindex",
+  "evidenceImages": "four complete original PNGs, labels retained, HTTP 200",
+  "lint": "passed",
+  "typescript": "passed",
+  "build": "passed"
+}

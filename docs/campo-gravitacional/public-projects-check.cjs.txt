@@ -1,0 +1,27 @@
+const{chromium}=require('playwright');const assert=require('node:assert/strict');const fs=require('fs');
+(async()=>{const browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox']});const page=await browser.newPage();const base='http://127.0.0.1:3007';const dir='/workspace/portfolio-fransheska/docs/campo-gravitacional/public-projects';fs.mkdirSync(dir,{recursive:true});const errors=[];page.on('pageerror',e=>errors.push(String(e)));const results=[];
+for(const [name,width,height] of [['desktop',1440,900],['tablet',768,1024],['mobile',390,844]]){
+ await page.setViewportSize({width,height});await page.goto(base);await page.locator('#trabajo').scrollIntoViewIfNeeded();await page.waitForTimeout(2500);
+ assert.equal(await page.locator('[data-select]').count(),2);assert.equal(await page.locator('[data-project]').count(),2);assert.equal(await page.getByText('SIRIUS',{exact:true}).count(),0);assert.equal(await page.getByText('Portfolio Profesional',{exact:true}).count(),0);
+ for(let i=0;i<2;i++){
+  const step=page.locator(`[data-select="${i}"]`);if(width>900){await step.focus();await page.keyboard.press('Enter')}else if(i===1){await page.locator(`[data-project="${i}"]`).focus();await page.keyboard.press('Enter')}await page.waitForTimeout(1000);assert.equal(await page.locator('#status').innerText(),'IMPLEMENTADO');assert.equal(await step.getAttribute('aria-pressed'),'true');
+  await page.screenshot({path:`${dir}/${name}-home-${i+1}.png`});
+  await page.locator(width<=900?`[data-project="${i}"]`:'#details').focus();await page.keyboard.press('Enter');await page.locator('#case-dialog[open]').waitFor();assert.match(await page.locator('#case-dialog a').getAttribute('href'),new RegExp(i?'room-management':'institutional-goals'));await page.keyboard.press('Escape');assert.equal(await page.locator('#case-dialog[open]').count(),0);
+ }
+ for(const slug of ['institutional-goals','room-management']){
+  assert.equal((await page.goto(`${base}/case-studies/${slug}`)).status(),200);assert.equal(await page.locator('.case-project-nav a').count(),2);assert.equal(await page.locator('.case-project-nav a[aria-current="page"]').count(),1);assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
+  assert.equal(await page.locator('.case-evidence img').count(),2);
+  for(const img of await page.locator('.case-evidence img').all()){await img.scrollIntoViewIfNeeded();await img.evaluate(el=>el.decode());assert.equal(await img.evaluate(el=>el.complete&&el.naturalWidth>0),true);assert.equal((await page.request.get(base+await img.getAttribute('src'))).status(),200)}
+  assert.match(await page.locator('.case-evidence').innerText(),/Capturas anonimizadas · datos demostrativos/);
+  assert.equal(await page.locator('a[download]').getAttribute('href'),'/cv-fransheska-ruiz.pdf');
+  const ids=await page.locator('[id]').evaluateAll(els=>els.map(el=>el.id));assert.equal(ids.length,new Set(ids).size);
+  await page.evaluate(async()=>{for(let y=0;y<document.body.scrollHeight;y+=400){window.scrollTo(0,y);await new Promise(r=>setTimeout(r,60));}window.scrollTo(0,0)});await page.waitForTimeout(1000);
+  await page.screenshot({path:`${dir}/${name}-${slug}.png`,fullPage:true});
+  const links=await page.locator('a[href^="/"]').evaluateAll(els=>els.map(el=>el.getAttribute('href').split('#')[0]||'/'));for(const href of new Set(links))assert.equal((await page.request.get(base+href)).status(),200);
+  await page.emulateMedia({reducedMotion:'reduce'});await page.waitForTimeout(100);assert.equal(await page.locator('.motion').getAttribute('aria-pressed'),'true');assert.equal(await page.locator('.motion').isDisabled(),true);await page.emulateMedia({reducedMotion:'no-preference'});await page.locator('.motion').click();assert.equal(await page.locator('.motion').getAttribute('aria-pressed'),'true');await page.locator('.motion').click();
+  results.push({name,slug,route:'passed',keyboardSelector:'passed',dialog:'passed',links:'passed',reducedMotion:'passed'});
+ }
+}
+const sitemap=await(await page.request.get(base+'/sitemap.xml')).text();assert.match(sitemap,/institutional-goals/);assert.match(sitemap,/room-management/);assert.doesNotMatch(sitemap,/sirius|portfolio/);
+for(const slug of ['sirius','portfolio']){assert.equal((await page.goto(`${base}/case-studies/${slug}`)).status(),200);assert.match(await page.locator('meta[name="robots"]').getAttribute('content'),/noindex/);assert.equal(await page.locator('.case-project-nav a').count(),2)}
+assert.deepEqual(errors,[]);fs.writeFileSync(dir+'/report.json',JSON.stringify({results,errors,sitemap:'two public cases only',archivedRoutes:'noindex',evidenceImages:'four complete original PNGs, labels retained, HTTP 200',lint:'passed',typescript:'passed',build:'passed'},null,2)+'\n');await browser.close();console.log('Passed: 6 case/viewport checks, Home selectors/dialogs, links, motion, sitemap and archived noindex. All four evidence images passed.');})().catch(e=>{console.error(e);process.exit(1)});

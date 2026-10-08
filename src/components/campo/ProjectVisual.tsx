@@ -6,6 +6,7 @@ export default function ProjectVisual({ project }: { project: CampoProject }) {
       {[35, 60, 45, 85, 70].map((height, index) => <i key={index} style={{ "--h": `${height}%` } as CSSProperties} />)}
     </div>}
     {project.visual === "web" && <div className="webasset" aria-hidden="true">Fr.<br />Ruiz</div>}
+    {project.visual === "agenda" && <div className="agendaasset" aria-hidden="true">{Array.from({ length: 28 }, (_, index) => <i key={index} />)}</div>}
     {project.visual === "system" && <div className="systemasset" aria-hidden="true"><span>SIRIUS</span></div>}
   </div>;
 }
