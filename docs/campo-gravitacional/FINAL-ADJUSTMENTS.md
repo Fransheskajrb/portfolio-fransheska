@@ -1,3 +1,5 @@
+> Estado actualizado de privacidad y rendimiento: [PRODUCTION-AUDIT.md](./PRODUCTION-AUDIT.md). Las capturas actuales incluyen la redacción institucional autorizada; las comprobaciones antiguas de bytes describen su etapa histórica.
+
 # Ajustes finales de Home, rutas y metadata
 
 ## Implementado

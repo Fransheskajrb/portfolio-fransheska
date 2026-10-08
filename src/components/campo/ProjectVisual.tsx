@@ -7,7 +7,7 @@ export default function ProjectVisual({ project }: { project: CampoProject }) {
   if (capture) return <div className="surface surface--capture">
     <span className="asset-title">{project.assetTitle}</span>
     <div className="project-capture">
-      <Image src={capture.src} alt={`${capture.title}: datos demostrativos e información protegida`} fill sizes="(max-width: 900px) 90vw, 60vw" unoptimized />
+      <Image src={capture.src.replace(/\.png$/, ".webp")} alt={`${capture.title}: datos demostrativos e información protegida`} fill sizes="(max-width: 900px) 90vw, 60vw" unoptimized />
     </div>
   </div>;
   return <div className="surface"><span className="asset-title">{project.assetTitle}</span>

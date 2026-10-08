@@ -61,7 +61,7 @@ dialog .close{border-color:#c5c3be;color:#f2eee6}
 
 /* A continuous atmospheric background supports the entire portfolio. */
 body{position:relative;isolation:isolate}
-body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(90deg,#383b4040,transparent 75%),url('/assets/graphite-depth-v2.png');background-size:cover;background-position:60% 50%;opacity:.42}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(90deg,#383b4040,transparent 75%),url('/assets/graphite-depth-v2.webp');background-size:cover;background-position:60% 50%;opacity:.42}
 main{z-index:1}footer{position:relative;z-index:1}
 .hero{background:transparent}
 .hero .note{z-index:1}

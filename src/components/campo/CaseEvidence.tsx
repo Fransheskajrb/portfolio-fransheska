@@ -15,7 +15,7 @@ export function CaseCover({ slug }: { slug: string }) {
   if (!image) return null;
   return <figure className="case-cover">
     <a href={image.src} aria-label={`Ver captura completa de ${image.title}`}>
-      <Image src={image.src} alt={`${image.title}: captura anonimizada con datos demostrativos e información protegida`} width={image.width} height={image.height} unoptimized preload />
+      <Image src={image.src.replace(/\.png$/, ".webp")} alt={`${image.title}: captura anonimizada con datos demostrativos e información protegida`} width={image.width} height={image.height} unoptimized preload />
     </a>
     <figcaption>{image.title} · {protectionNotice(slug)}</figcaption>
   </figure>;
@@ -30,7 +30,7 @@ export default function CaseEvidence({ slug }: { slug: string }) {
     <p className="meta">{protectionNotice(slug)}</p>
     {images.map(({ src, title, width, height }) => <figure key={src}>
       <a href={src} aria-label={`Ver captura completa de ${title}`}>
-        <Image src={src} alt={`${title}: captura anonimizada con datos demostrativos e información protegida`} width={width} height={height} unoptimized />
+        <Image src={src.replace(/\.png$/, ".webp")} alt={`${title}: captura anonimizada con datos demostrativos e información protegida`} width={width} height={height} unoptimized />
       </a>
       <figcaption>{title} · Datos demostrativos; no representan resultados reales.</figcaption>
     </figure>)}

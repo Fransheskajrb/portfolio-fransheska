@@ -11,12 +11,23 @@ type LabelRect = {
     w: number;
     h: number;
 };
-/** Frozen Canvas projection, geometry and drawing from the approved handoff. */
+/** Approved geometry; blurred depth layers are composited once per frame. */
 export function createSkillNetwork(canvas: HTMLCanvasElement) {
     const context = canvas.getContext('2d');
     if (!context)
         return () => { };
     const ctx = context;
+    const depthCanvas = document.createElement('canvas');
+    const depth = depthCanvas.getContext('2d');
+    if (!depth) return () => { };
+    const depthCtx = depth;
+    function compositeDepth(blur: number) {
+        ctx.save();
+        ctx.filter = `blur(${blur}px)`;
+        ctx.drawImage(depthCanvas, 0, 0, w, h);
+        ctx.restore();
+        depthCtx.clearRect(0, 0, w, h);
+    }
     const reduce = matchMedia('(prefers-reduced-motion: reduce)');
     let w = 1, h = 1, px = 0, py = 0, tx = 0, ty = 0, visible = true, frame = 0;
     const tau = Math.PI * 2, count = 112;
@@ -48,9 +59,19 @@ export function createSkillNetwork(canvas: HTMLCanvasElement) {
     function muted() { return reduce.matches || document.body.classList.contains('reduced'); }
     function schedule() { if (!frame && visible && !document.hidden)
         frame = requestAnimationFrame(tick); }
-    function size() { const r = canvas.getBoundingClientRect(); w = r.width; h = r.height; const d = Math.min(devicePixelRatio || 1, 2); canvas.width = Math.round(w * d); canvas.height = Math.round(h * d); ctx.setTransform(d, 0, 0, d, 0, 0); schedule(); }
+    function size() {
+        const r = canvas.getBoundingClientRect();
+        w = r.width; h = r.height;
+        const d = Math.min(devicePixelRatio || 1, matchMedia('(pointer:coarse)').matches || innerWidth <= 540 ? 2 : 1.5);
+        canvas.width = depthCanvas.width = Math.round(w * d);
+        canvas.height = depthCanvas.height = Math.round(h * d);
+        ctx.setTransform(d, 0, 0, d, 0, 0);
+        depthCtx.setTransform(d, 0, 0, d, 0, 0);
+        schedule();
+    }
     function draw() {
         ctx.clearRect(0, 0, w, h);
+        depthCtx.clearRect(0, 0, w, h);
         const scale = Math.min(w * .29, h * .255), cx = w * .56, cy = h * .48, yaw = .32 + px * .38, pitch = -.14 + py * .24;
         function project(n: Point3D) { const x = n.x * Math.cos(yaw) + n.z * Math.sin(yaw), z = -n.x * Math.sin(yaw) + n.z * Math.cos(yaw), y = n.y * Math.cos(pitch) - z * Math.sin(pitch), zz = n.y * Math.sin(pitch) + z * Math.cos(pitch), k = 3.7 / (3.7 - zz); return { x: cx + x * scale * k, y: cy + y * scale * k, z: zz, k, id: n.id ?? 0 }; }
         // Translucent light merges the network into the full-page atmosphere.
@@ -61,31 +82,43 @@ export function createSkillNetwork(canvas: HTMLCanvasElement) {
         ctx.fillStyle = glow;
         ctx.fillRect(0, 0, w, h);
         // A distant, sparse network establishes a second plane behind the sphere.
-        ctx.save();
-        ctx.filter = 'blur(1.3px)';
+        depthCtx.save();
         for (let i = 0; i < 18; i++) {
             const p = project({ x: ((i * 7) % 19 / 18 - .5) * 3.3, y: ((i * 11) % 17 / 16 - .5) * 3, z: -1.6 });
             const q = project(nodes[(i * 7) % count]);
-            ctx.strokeStyle = 'rgba(247,247,242,.09)';
-            ctx.lineWidth = .65;
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(q.x, q.y);
-            ctx.stroke();
-            ctx.fillStyle = 'rgba(247,247,242,.2)';
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, 1.3, 0, tau);
-            ctx.fill();
+            depthCtx.strokeStyle = 'rgba(247,247,242,.09)';
+            depthCtx.lineWidth = .65;
+            depthCtx.beginPath();
+            depthCtx.moveTo(p.x, p.y);
+            depthCtx.lineTo(q.x, q.y);
+            depthCtx.stroke();
+            depthCtx.fillStyle = 'rgba(247,247,242,.2)';
+            depthCtx.beginPath();
+            depthCtx.arc(p.x, p.y, 1.3, 0, tau);
+            depthCtx.fill();
         }
-        ctx.restore();
+        depthCtx.restore();
+        compositeDepth(1.3);
         const points = nodes.map(project);
-        edges.map(([a, b]) => ({ p: points[a], q: points[b], z: (points[a].z + points[b].z) / 2 })).sort((a, b) => a.z - b.z).forEach(({ p, q, z }) => { ctx.save(); if (z < -.4)
-            ctx.filter = 'blur(.65px)'; ctx.strokeStyle = 'rgba(246,247,244,' + (.085 + (z + 1) * .155) + ')'; ctx.lineWidth = .3 + (z + 1) * .38; ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke(); ctx.restore(); });
-        points.slice().sort((a, b) => a.z - b.z).forEach(p => { const r = (p.id % 17 === 0 ? 3 : 1.25) * p.k; ctx.save(); ctx.globalAlpha = .24 + (p.z + 1) * .35; if (p.z < -.4)
-            ctx.filter = 'blur(.8px)'; if (p.z > .3) {
-            ctx.shadowColor = '#fffff5';
-            ctx.shadowBlur = p.id % 17 === 0 ? 16 : 5;
-        } ctx.fillStyle = '#f6f7f2'; ctx.beginPath(); ctx.arc(p.x, p.y, r, 0, tau); ctx.fill(); ctx.restore(); });
+        const sortedEdges = edges.map(([a, b]) => ({ p: points[a], q: points[b], z: (points[a].z + points[b].z) / 2 })).sort((a, b) => a.z - b.z);
+        function drawEdge(target: CanvasRenderingContext2D, { p, q, z }: typeof sortedEdges[number]) {
+            target.strokeStyle = 'rgba(246,247,244,' + (.085 + (z + 1) * .155) + ')';
+            target.lineWidth = .3 + (z + 1) * .38;
+            target.beginPath(); target.moveTo(p.x, p.y); target.lineTo(q.x, q.y); target.stroke();
+        }
+        sortedEdges.filter(edge => edge.z < -.4).forEach(edge => drawEdge(depthCtx, edge));
+        compositeDepth(.65);
+        sortedEdges.filter(edge => edge.z >= -.4).forEach(edge => drawEdge(ctx, edge));
+        const sortedPoints = points.slice().sort((a, b) => a.z - b.z);
+        function drawPoint(target: CanvasRenderingContext2D, p: typeof points[number]) {
+            const r = (p.id % 17 === 0 ? 3 : 1.25) * p.k;
+            target.save(); target.globalAlpha = .24 + (p.z + 1) * .35;
+            if (p.z > .3) { target.shadowColor = '#fffff5'; target.shadowBlur = p.id % 17 === 0 ? 16 : 5; }
+            target.fillStyle = '#f6f7f2'; target.beginPath(); target.arc(p.x, p.y, r, 0, tau); target.fill(); target.restore();
+        }
+        sortedPoints.filter(p => p.z < -.4).forEach(p => drawPoint(depthCtx, p));
+        compositeDepth(.8);
+        sortedPoints.filter(p => p.z >= -.4).forEach(p => drawPoint(ctx, p));
         hubs.forEach((hub, i) => {
             const p = project(hub), anchor = points[[19, 68, 90][i]], radius = (w < 450 ? 15 : 20) * p.k;
             ctx.save();
@@ -173,7 +206,7 @@ export function createSkillNetwork(canvas: HTMLCanvasElement) {
             ctx.restore();
         });
     }
-    function tick() { frame = 0; if (muted()) {
+    function tick() { frame = 0; if (!visible || document.hidden) return; if (muted()) {
         px = 0;
         py = 0;
     }
@@ -182,19 +215,19 @@ export function createSkillNetwork(canvas: HTMLCanvasElement) {
         py += (ty - py) * .055;
     } draw(); if (!muted() && (Math.abs(tx - px) + Math.abs(ty - py) > .001))
         schedule(); }
-    const onPointer = (e: PointerEvent) => { if (e.pointerType === 'touch' || muted())
-        return; tx = (e.clientX / innerWidth - .5) * 2; ty = (e.clientY / innerHeight - .5) * 2; schedule(); };
-    const onScroll = () => { if (muted())
+    const onPointer = (e: PointerEvent) => { if (e.pointerType === 'touch' || muted() || !visible || document.hidden)
+        return; const nextX = (e.clientX / innerWidth - .5) * 2, nextY = (e.clientY / innerHeight - .5) * 2; if (nextX === tx && nextY === ty) return; tx = nextX; ty = nextY; schedule(); };
+    const onScroll = () => { if (muted() || !visible || document.hidden)
         return; ty = Math.min(scrollY / 700, 1) * .65; if (matchMedia('(pointer:coarse)').matches)
         tx = Math.min(scrollY / 500, 1); schedule(); };
     window.addEventListener('pointermove', onPointer, { passive: true });
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('campo-motion-change', schedule);
     reduce.addEventListener('change', schedule);
-    document.addEventListener('visibilitychange', schedule);
+    const onVisibility = () => { if (document.hidden) { cancelAnimationFrame(frame); frame = 0; } else schedule(); };
+    document.addEventListener('visibilitychange', onVisibility);
     const resizeObserver = new ResizeObserver(size);
-    const intersectionObserver = new IntersectionObserver(e => { visible = e[0].isIntersecting; if (visible)
-        schedule(); });
+    const intersectionObserver = new IntersectionObserver(e => { visible = e[0].isIntersecting; if (visible) { onScroll(); schedule(); } else { cancelAnimationFrame(frame); frame = 0; } });
     resizeObserver.observe(canvas);
     intersectionObserver.observe(canvas);
     size();
@@ -206,6 +239,6 @@ export function createSkillNetwork(canvas: HTMLCanvasElement) {
         window.removeEventListener('scroll', onScroll);
         window.removeEventListener('campo-motion-change', schedule);
         reduce.removeEventListener('change', schedule);
-        document.removeEventListener('visibilitychange', schedule);
+        document.removeEventListener('visibilitychange', onVisibility);
     };
 }

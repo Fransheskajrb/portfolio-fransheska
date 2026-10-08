@@ -1,0 +1,30 @@
+[
+  {
+    "original": "public/images/cases/metas-sanitarias.png",
+    "derivative": "public/images/cases/metas-sanitarias.webp",
+    "originalBytes": 922275,
+    "derivativeBytes": 674262,
+    "pixelDifference": 0
+  },
+  {
+    "original": "public/images/cases/reportes-sala.png",
+    "derivative": "public/images/cases/reportes-sala.webp",
+    "originalBytes": 901212,
+    "derivativeBytes": 712162,
+    "pixelDifference": 0
+  },
+  {
+    "original": "public/images/cases/agenda-sala.png",
+    "derivative": "public/images/cases/agenda-sala.webp",
+    "originalBytes": 1024287,
+    "derivativeBytes": 832192,
+    "pixelDifference": 0
+  },
+  {
+    "original": "public/images/cases/acreditacion.png",
+    "derivative": "public/images/cases/acreditacion.webp",
+    "originalBytes": 907816,
+    "derivativeBytes": 666158,
+    "pixelDifference": 0
+  }
+]

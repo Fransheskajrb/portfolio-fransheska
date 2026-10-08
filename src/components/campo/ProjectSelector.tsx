@@ -3,19 +3,22 @@
 import { useRef, useState, type ReactNode } from "react";
 import { campoProjects } from "@/data/campoProjects";
 import Link from "next/link";
+import { useInView } from "motion/react";
 import Dialog from "@/components/campo/Dialog";
 
 export default function ProjectSelector({ visuals }: { visuals: ReactNode[] }) {
+  const projectsRef = useRef<HTMLDivElement>(null);
+  const loadVisuals = useInView(projectsRef, { once: true, margin: "200px" });
   const [active, setActive] = useState(0);
   const dialogRef = useRef<HTMLDialogElement>(null);
   const selected = campoProjects[active];
   function openCase() { dialogRef.current?.showModal(); }
   return <>
-    <div className="projects">
+    <div className="projects" ref={projectsRef}>
       <div className="work-detail" aria-live="polite">
-        <div className="steps" aria-label="Elegir proyecto">
+        <div className="steps" role="group" aria-label="Elegir proyecto">
           {campoProjects.map((project, index) => <button key={project.slug} data-select={index}
-            aria-pressed={active === index} aria-label={project.title}
+            aria-pressed={active === index} aria-label={`${String(index + 1).padStart(2, "0")} · ${project.title}`}
             onClick={() => setActive(index)}>{String(index + 1).padStart(2, "0")}</button>)}
         </div>
         <span className="state" id="status">{selected.status}</span>
@@ -25,9 +28,11 @@ export default function ProjectSelector({ visuals }: { visuals: ReactNode[] }) {
       </div>
       {campoProjects.map((project, index) => <button className="project" key={project.slug}
         data-project={index} data-pos={index === active ? 1 : index === (active + 1) % campoProjects.length ? 0 : 2}
-        aria-label={`Seleccionar ${project.title}`}
         onClick={() => index === active ? openCase() : setActive(index)}>
-        {visuals[index]}
+        {loadVisuals ? visuals[index] : <div className="surface surface--capture">
+          <span className="asset-title">{project.assetTitle}</span>
+          <div className="project-capture" />
+        </div>}
         <span className="meta">{String(index + 1).padStart(2, "0")} / {project.status}</span>
         <h3>{project.title}</h3><small>{project.subtitle}</small>
       </button>)}
