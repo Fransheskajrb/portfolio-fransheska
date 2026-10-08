@@ -8,13 +8,28 @@
 - SIRIUS mantiene noindex y sigue fuera de Home, selector, navegación y sitemap.
 - Metadata global reutiliza pageMetadata, que incluye el asset social aprobado únicamente cuando existe. Ruta prevista: `public/images/og-campo-gravitacional.png`.
 
-## Bloqueo del asset Open Graph
+## Open Graph integrado
 
-La imagen aprobada se recibió como imagen embebida en el chat. No está disponible
-como archivo descargable en el entorno; no se recreó ni se sustituyó. Falta adjuntar
-el PNG original o un ZIP. No se afirma que Open Graph esté integrado ni validado.
-El helper continúa con metadata textual sin enlace roto; cuando llegue el archivo
-se copiará sin transformación, se reconstruirá y se validarán OG/Twitter/HTTP.
+La imagen aprobada del ZIP se copió sin transformación a
+`public/images/og-campo-gravitacional.png`. Tamaño: 1731×909, 2.116.264 bytes.
+SHA-256 idéntico al original:
+`6190fc9fca441b619873cdd604d73341b1e348ce1f531b7b4946a252cc3cdc9e`.
+
+La metadata global y de Home/ambos casos reutiliza la infraestructura existente:
+`og:image` y `twitter:image` apuntan a
+`https://www.fransheskaruiz.com/images/og-campo-gravitacional.png`;
+Twitter usa `summary_large_image`. Asset HTTP 200/image-png y bytes originales
+verificados sobre el build de producción local. No se modificó código, diseño,
+animaciones ni contenido del sitio para activar la imagen social.
+
+La QA final está en `final-open-graph-report.json` y el script en
+`final-open-graph-check.cjs.txt`. Incluye Home y ambos casos a 1440/768/390,
+metadata de las tres páginas, enlaces internos/assets, CV por teclado y bytes,
+Portfolio 404 y SIRIUS excluido de la experiencia principal/sitemap con noindex.
+
+Pendiente externo: comprobar LinkedIn desde un navegador normal; el proxy impide
+su validación externa. Los scrapers sociales del dominio de producción solo verán
+el nuevo asset después del merge y despliegue, que no se han realizado.
 
 ## Validación
 

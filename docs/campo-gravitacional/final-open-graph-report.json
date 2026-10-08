@@ -1,0 +1,15 @@
+{
+  "checks": 9,
+  "portfolio": 404,
+  "sirius": "not promoted or in sitemap; noindex",
+  "cv": "200, correct name and original bytes; keyboard download on three pages at three sizes",
+  "internalLinks": "passed",
+  "browserErrors": [],
+  "openGraph": {
+    "imagePresent": true,
+    "twitterCard": "summary_large_image",
+    "assetStatus": 200,
+    "unchangedOriginal": true,
+    "sha256": "6190fc9fca441b619873cdd604d73341b1e348ce1f531b7b4946a252cc3cdc9e"
+  }
+}
